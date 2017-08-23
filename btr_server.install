@@ -1,0 +1,55 @@
+<?php
+/**
+ * @file
+ * Install functions for the profile btr_server.
+ */
+
+/**
+ * Implements hook_install().
+ *
+ * Perform actions to set up the site for this profile.
+ */
+function btr_server_install() {
+
+  // Define the database of B-Translator.
+  if (isset($GLOBALS['databases']['btr_db']['default'])) {
+    define('BTR_DB', 'btr_db');
+  }
+  else {
+    define('BTR_DB', 'default');
+  }
+
+  include_once DRUPAL_ROOT . '/profiles/standard/standard.install';
+  standard_install();
+
+  // Apply all the features.
+  features_rebuild();
+  features_revert();
+
+  // user settings
+  variable_set('user_register', USER_REGISTER_VISITORS);
+  variable_set('user_email_verification', TRUE);
+
+  _btrserver_install_mailsystem();
+  _btrserver_install_user_restrictions();
+}
+
+function _btrserver_install_mailsystem()
+{
+  variable_set('mailsystem_theme', 'current');
+
+  $mail_system = variable_get('mail_system');
+  $mail_system['default-system'] = 'MimeMailSystem';
+
+  variable_set('mail_system', $mail_system);
+}
+
+function _btrserver_install_user_restrictions() {
+  db_insert('user_restrictions')
+    ->fields(array(
+      'mask' => '%@netcourrier.com',
+      'type' => 'mail',
+      'status' => 0,  // deny
+      ))
+    ->execute();
+}

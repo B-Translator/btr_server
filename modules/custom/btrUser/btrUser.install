@@ -1,0 +1,121 @@
+<?php
+/**
+ * @file btrUser.install
+ * Install and update functions for the module btrUser.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function btrUser_install() {
+  // create custom fields for user preferencies
+  _btrUser_create_userprofile_fields();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function btrUser_uninstall() {
+  // delete the custom fields of user preferencies
+  _btrUser_delete_userprofile_fields();
+}
+
+/**
+ * This function is called by hook_uninstall(), in order
+ * to delete the custom fields created by btrUser.
+ */
+function _btrUser_delete_userprofile_fields() {
+
+  $field_names = array(
+    'field_translation_lng',
+    'field_projects',
+    'field_auxiliary_languages',
+  );
+
+  foreach ($field_names as $field_name) {
+    $instance = field_info_instance('user', $field_name, 'user');
+    field_delete_instance($instance);
+    $field = field_info_field($field_name);
+    field_delete_field($field);
+  }
+}
+
+/**
+ * This function is called by hook_install(), in order
+ * to create custom fields about user preferencies for
+ * B-Translator.
+ */
+function _btrUser_create_userprofile_fields() {
+
+  // create a field and instance for 'field_translation_lng'
+  field_create_field(
+    array(
+      'field_name' => 'field_translation_lng',
+      'type' => 'list_text',
+      'cardinality' => 1,
+      'entity_types' => array('user'),
+    ));
+  field_create_instance(
+    array(
+      'field_name' => 'field_translation_lng',
+      'entity_type' => 'user',
+      'bundle' => 'user',
+      'label' => 'Translation Language',
+      'description' => 'The language of translations. You will help with the translations of this language (review existing translations or submit new ones).',
+      //'default_value' => array(array('value' => 'fr')),
+      'settings' => array('user_register_form' => 1),
+      'widget' => array(
+        'weight' => '1',
+        'type' => 'options_select',
+        'module' => 'options',
+      ),
+    ));
+
+  // create a field and instance for 'field_projects'
+  field_create_field(
+    array(
+      'field_name' => 'field_projects',
+      'type' => 'text',
+      'cardinality' => FIELD_CARDINALITY_UNLIMITED,  //multiple (unlimited) number of values
+      'entity_types' => array('user'),
+    ));
+  field_create_instance(
+    array(
+      'field_name' => 'field_projects',
+      'entity_type' => 'user',
+      'bundle' => 'user',
+      'label' => 'Projects',
+      'description' => "List of the subscribed projects of the user.",
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => 1,
+      ),
+      'widget' => array(
+        'weight' => '2',
+        'type' => 'text_textfield',
+        'settings' => array('size' => '30'),
+      ),
+    ));
+
+  // create a field and instance for 'field_auxiliary_languages'
+  field_create_field(
+    array(
+      'field_name' => 'field_auxiliary_languages',
+      'type' => 'list_text',
+      'cardinality' => 2,
+      'entity_types' => array('user'),
+    ));
+  field_create_instance(
+    array(
+      'field_name' => 'field_auxiliary_languages',
+      'entity_type' => 'user',
+      'bundle' => 'user',
+      'label' => 'Auxiliary Languages',
+      'description' => 'You may select one or two auxiliary (helping) languages, especially if you are not very familiar with English. If the translation of the string in these languages exists, it will be displayed below the original (English) string. This may help you to get a better idea about how it could be translated.',
+      //'settings' => array('user_register_form' => 1),
+      'widget' => array(
+        'weight' => '4',
+        'type' => 'options_buttons',
+      ),
+    ));
+}

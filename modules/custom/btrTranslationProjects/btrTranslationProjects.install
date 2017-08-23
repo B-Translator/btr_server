@@ -1,0 +1,63 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function btrTranslationProjects_schema() {
+
+  $schema = array();
+
+  $schema['translation_projects'] = array(
+    'description' => 'The base table for the Project entity',
+    'fields' => array(
+      'id' => array(
+        'description' => 'Primary key of the Project entity',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'lng' => array(
+        'description' => 'Language code of the project.',
+        'type' => 'varchar',
+        'length' => 5,
+        'not null' => TRUE,
+      ),
+      'origin' => array(
+        'description' => 'Origin of the project.',
+        'type' => 'varchar',
+        'length' => 100,
+        'not null' => TRUE,
+      ),
+      'project' => array(
+        'description' => 'Name of the project.',
+        'type' => 'varchar',
+        'length' => 100,
+        'not null' => TRUE,
+      ),
+      'description' => array(
+        'description' => 'Project description.',
+        'type' => 'varchar',
+        'length' => 510,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'app_url' => array(
+        'description' => 'URL of the mobile app.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+    ),
+    'primary key' => array('id'),
+    'unique keys' => array(
+      'k1' => array('lng', 'origin', 'project'),
+    ),
+    'indexes' => array(
+      'origin' => array('origin'),
+      'project' => array('project'),
+    ),
+  );
+
+  return $schema;
+}

@@ -1,0 +1,106 @@
+<?php
+/**
+ * @file
+ * Module file for btrCore.
+ */
+
+// Define the database of B-Translator.
+if (isset($GLOBALS['databases']['btr_db']['default'])) {
+  define('BTR_DB', 'btr_db');
+ }
+ else {
+   define('BTR_DB', 'default');
+ }
+
+require_once(dirname(__FILE__) . '/btrCore.menu.inc');
+require_once(dirname(__FILE__) . '/btrCore.cron.inc');
+
+module_load_include('php', 'btrCore', 'lib/btr');
+
+/**
+ * Implements hook_help().
+ */
+/*
+function btrCore_help($path, $args) {
+  switch($path)
+    {
+      case 'translations/get':
+        $help = t('Get translation suggestions for a given string.');
+        break;
+
+      case 'translations/vote':
+        $help = t('Vote the best translation for a string, or suggest a better translation.');
+        break;
+    }
+
+  return $help;
+}
+*/
+
+
+/**
+ * Implement hook_mail().
+ *
+ * This hook defines a list of possible e-mail templates that this module can
+ * send. Each e-mail is given a unique identifier, or 'key'.
+ *
+ * $message comes in with some standard properties already set: 'to' address,
+ * 'from' address, and a set of default 'headers' from drupal_mail(). The goal
+ * of hook_mail() is to set the message's 'subject' and 'body' properties, as
+ * well as make any adjustments to the headers that are necessary.
+ *
+ * The $params argument is an array which can hold any additional data required
+ * to build the mail subject and body; for example, user-entered form data, or
+ * some context information as to where the mail request came from.
+ *
+ * Note that hook_mail() is not actually a hook. It is only called for a single
+ * module, the module named in the first argument of drupal_mail(). So it's
+ * a callback of a type, but not a hook.
+ */
+function btrCore_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'notifications':
+    default:
+      $message['subject'] = $params['subject'];
+      $message['body'] = $params['body'];
+      break;
+  }
+}
+
+
+/**
+ * Implements hook_init().
+ */
+function btrCore_init() {
+}
+
+/**
+ * Implements hook_flush_caches().
+ * Add cache table names to the list of cache tables
+ * that will be cleared by the Clear button on the Performance page
+ * or whenever drupal_flush_all_caches is invoked.
+ * Returns an array of cache table names.
+ */
+function btrCore_flush_caches() {
+  return ['cache_btrCore'];
+}
+
+/**
+ * Implements hook_robotstxt().
+ *
+ * Called by the module robotstxt. If this module is not installed
+ * then this helps to document the modifications that need to be done
+ * to robots.txt
+ */
+function btrCore_robotstxt() {
+  return [
+    '# B-Translator',
+    'User-agent: *',
+    'Disallow: /',
+  ];
+}
+
+/**
+ * Include functions for debug.
+ */
+//require_once(dirname(__FILE__) . '/btrCore.debug.inc');

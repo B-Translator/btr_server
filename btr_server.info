@@ -1,0 +1,120 @@
+name = B-Translator Server
+description = Drupal installation profile for B-Translator Server.
+version = 1.x
+core = 7.x
+exclusive = TRUE
+
+;--------------------
+; Files
+;--------------------
+files[] = btr_server.install
+files[] = btr_server.profile
+
+;--------------------
+; Core
+;--------------------
+;dependencies[] = book
+dependencies[] = contact
+;dependencies[] = blog
+dependencies[] = menu
+dependencies[] = path
+dependencies[] = taxonomy
+dependencies[] = block
+dependencies[] = aggregator
+dependencies[] = dashboard
+dependencies[] = filter
+dependencies[] = image
+dependencies[] = locale
+dependencies[] = node
+dependencies[] = search
+dependencies[] = system
+dependencies[] = toolbar
+dependencies[] = trigger
+dependencies[] = update
+dependencies[] = user
+dependencies[] = syslog
+dependencies[] = rdf
+dependencies[] = comment
+
+;--------------------
+; Contrib
+;--------------------
+
+;;; Development
+dependencies[] = reroute_email
+dependencies[] = devel
+dependencies[] = diff
+;dependencies[] = coder
+
+;;; Extensions
+dependencies[] = less
+dependencies[] = ctools
+dependencies[] = libraries
+dependencies[] = entity
+dependencies[] = xautoload
+dependencies[] = token
+dependencies[] = rules_scheduler
+dependencies[] = rules_admin
+dependencies[] = pathauto
+dependencies[] = subpathauto
+
+;;; User Interface
+dependencies[] = context
+dependencies[] = context_ui
+dependencies[] = views
+dependencies[] = views_ui
+dependencies[] = boxes
+dependencies[] = edit_profile
+dependencies[] = color
+
+;;; Features
+dependencies[] = strongarm
+dependencies[] = features
+dependencies[] = fe_block
+dependencies[] = uuid
+dependencies[] = node_export
+dependencies[] = node_export_features
+
+;;; Admin Utils
+dependencies[] = module_filter
+dependencies[] = l10n_update
+dependencies[] = user_restrictions
+
+;;; Performance
+dependencies[] = boost
+
+;--------------------
+; Sending Emails
+;--------------------
+
+dependencies[] = mailsystem
+dependencies[] = phpmailer
+dependencies[] = mimemail
+dependencies[] = mimemail_action
+dependencies[] = mimemail_compress
+
+;--------------------
+; Misc
+;--------------------
+dependencies[] = menu_target
+dependencies[] = empty_front_page
+dependencies[] = jquery_update
+dependencies[] = nocurrent_pass
+dependencies[] = advuser
+
+;--------------------
+; B-Translator Server
+;--------------------
+dependencies[] = btrCore
+dependencies[] = btrUser
+dependencies[] = btrLanguages
+dependencies[] = btrTranslationProjects
+dependencies[] = btrServices
+
+;dependencies[] = btr_btrServices
+;dependencies[] = btr_btr
+;dependencies[] = btr_misc
+;dependencies[] = btr_layout
+;dependencies[] = btr_hybridauth
+;dependencies[] = btr_captcha
+;dependencies[] = btr_permissions

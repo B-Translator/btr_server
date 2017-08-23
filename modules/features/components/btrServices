@@ -1,0 +1,5 @@
+dependencies:btrServices
+services_endpoint:btranslator
+services_endpoint:public_btranslator
+oauth2_server:oauth2_btr
+user_permission:use oauth2 server

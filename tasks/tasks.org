@@ -1,0 +1,56 @@
+#+TITLE:     Tasks
+#+AUTHOR:    Dashamir Hoxha
+#+EMAIL:     dashohoxha@gmail.com
+#+DESCRIPTION:
+#+KEYWORDS:
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:nil -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:nil skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:overview toc:t ltoc:t mouse:#aadddd buttons:0 path:org-info.js
+
+* Implementation Plan
+  1. [X] Make *voting* work (without permissions, user setting, admin
+     config, etc.)
+  2. [X] Install a test/demo site.
+  3. [X] Add *admin config*, *user settings*, *permissions*,
+     permission checking, etc.
+  4. [+] Improve the *integration with facebook* (for voting).
+  5. [X] Put it online.
+  6. [+] Improve the *email interface* (for voting).
+  7. [ ] Add a *mobile interface* (or theme).
+  8. [ ] Build the pages for admin dashboard, reports and stats.
+  9. [X] Add an API for external applications.
+  10. [ ] Integration with google+, twitter, diaspora, etc.
+  11. [ ] Android app that can be used for voting.
+  12. [ ] Desktop application.
+  13. [ ] Plugins/widgets/modules etc. for integration with other
+          systems like WordPress, Joomla, etc.
+
+* Tasks
+
+** Integration with Facebook
+*** For each translation review add a button for posting it on FB as a poll.
+*** When a FB user votes or leaves a comment, update his status.
+
+
+** Misc
+*** TODO Rewrite import/export scripts as drush commands.
+*** TODO Add API for import/export of PO files, for diffs, for terms, etc.
+*** TODO Build an application with EmberJS and HTML5.
+*** TODO Try to use Drupal7 entities for strings, translations, etc.
+    This can improve the integration with the other Drupal modules.
+*** TODO Publish/export incremental dumps of the database
+    Maybe it should be a synch API which allows different instances of
+    B-Translator to synchronize with each-other, according to the
+    rules defined and agreed by the administrators.
+*** Send out HTML notification emails.
+*** Upgrade to Drupal8
+*** Desktop application for submitting feedback.
+
+*** POSTPONED Start with simple tests
+    Status: Already started, but it needs some work to define
+            more tests, and actually it is not so useful,
+            or important, or urgent. Probably it can become
+            more important when there will be more than one
+            developers.
+

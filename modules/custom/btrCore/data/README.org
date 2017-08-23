@@ -1,0 +1,299 @@
+#+OPTIONS: num:nil toc:t ^:nil f:nil TeX:nil LaTeX:nil
+#+STYLE: <link href="org-info.css" rel="stylesheet" type="text/css"/>
+
+#+AUTHOR: Dashamir Hoxha
+#+EMAIL: dashohoxha@gmail.com
+
+#+TITLE: Translation Workflow With B-Translator
+
+
+* Translation files
+
+  The translation files that are imported into the DB are retrieved
+  from the repository of the corresponding projects. This is done by
+  the scripts in the directory [[https://github.com/B-Translator/btr_server/tree/master/modules/custom/btrCore/data/get][get/]], which checkout (or update)
+  these files from each projects' repository.
+
+  The way of getting these files is slightly different for different
+  projects. However almost all of them are placed in the directory
+  =$data_root=, which is defined in [[https://github.com/B-Translator/btr_server/blob/master/modules/custom/btrCore/data/config.sh][config.sh]]. Besides =$data_root=,
+  ~config.sh~ defines also the variable =$languages=, which is a list
+  of the codes of the languages that are supported by the system.
+
+  Projects on the =$data_root= are also grouped (categorized) by
+  origin. For example all the GNOME projects are placed on the same
+  directory, all the KDE projects on another directory, and so on.
+  Under the 'origin' directory, there is a subdirectory for each
+  language, and under it usually there is a subdirectory for each
+  project, containing all the translation files of the project, in any
+  structure that is suitable for the project.
+
+  Some projects have just a single translation (PO) file (for example
+  those of GNOME or ubuntu), some others have several translation
+  files (like those of KDE), and some others have many translation
+  files (like those of LibreOffice and Mozilla).
+
+  In the case of Mozilla, translation files are not in gettext format,
+  so they are converted to PO files using ~moz2po~ (from Translation
+  Toolkit).
+
+
+* Importing projects
+
+  Translation projects are imported in two steps: the first step is to
+  create a project and import its template (POT) files, and the second
+  step is to import the translation (PO) files for each language. A
+  POT file usually has a corresponding PO file for each language.
+
+** Drush commands
+
+   Drush commands that are used for importing projects are:
+
+   - btr-project-add (btrp-add) :: Create a project and import its POT
+        files into the DB. If such a project already exists (the same
+        origine and project), it will be deleted first (related data
+        will be erased as well).
+
+   - btr-project-import (btrp-import) :: Import the PO files of an
+        origin/project/lng into the DB. Templates of the project (POT
+        files) must have been imported first. If the corresponding
+        template for a file does not exist, it will not be imported.
+
+   There are also commands for getting a list of projects and for
+   deleting a project:
+
+   - btr-project-ls (btrp-ls) :: List imported projects, filtered by
+        origin/project.
+
+   - btr-project-del (btrp-del) :: Delete everything related to the
+        given origin and project.
+
+   To get more details about the arguments etc. use =drush help
+   command=.
+
+
+** Import scripts
+
+   The scripts in the directory [[https://github.com/B-Translator/btr_server/tree/master/modules/custom/btrCore/data/import][import/]] are used to import projects
+   from a certain origin. For example ~kde.sh~ imports (or updates)
+   all the KDE projects, ~office.sh~ imports/updates all the
+   LibreOffice projects, and so on.
+
+   If a list of projects is passed on the command-line to these
+   scripts, then only the specified projects will be imported (instead
+   of all the projects).
+
+   In the import scripts, usually the French (fr) translation files
+   are used as template files.
+
+
+** Example script
+
+   [[https://github.com/B-Translator/btr_server/blob/master/modules/custom/btrCore/data/import/pingus.sh][This]] is a simple script for importing the =Pingus= project:
+   #+BEGIN_EXAMPLE
+   #!/bin/bash -x
+
+   ### go to the script directory
+   cd $(dirname $0)
+
+   ### set the drush alias
+   drush="drush $1"
+
+   ### set some variables
+   origin=Test
+   project=Pingus
+   dir=$(pwd)/pingus
+
+   ### create the project
+   $drush btrp-add $origin $project $dir/pingus-fr.po
+
+   ### import the PO files of each language
+   for lng in fr sq
+   do
+       $drush btrp-import $origin $project $lng $dir/pingus-$lng.po
+   done
+   #+END_EXAMPLE
+
+   In this case the project has only a single translation file
+   (.po). If the project has more then one translation files, then the
+   directory of these translation files will be passed as an argument
+   to the commands =drush btrp-add= and =drush btrp-import=, instead
+   of the translation file.
+
+
+* Vocabularies
+
+  Vocabularies are similar to translation projects, however their
+  strings (terms) are not extracted from a program but added
+  manually. They serve as a collection/dictionary of interesting,
+  important and frequently used terms and their suggested
+  translations.
+
+  Vocabularies can be created, deleted and managed from the web UI
+  and with drush commands.
+
+  Drush commands that are used for vocabularies are:
+
+  - btr-vocabulary-list (btrv-ls) :: List vocabularies.
+  - btr-vocabulary-add (btrv-add) :: Create a new empty vocabulary.
+  - btr-vocabulary-import (btrv-import) :: Import the terms and
+       translations of a vocabulary from a text file.
+  - btr-vocabulary-get (btrv-get) :: Export vocabulary to a text file.
+  - btr-vocabulary-del (btrv-del) :: Delete a vocabulary.
+
+  To get more details about the arguments etc. use =drush help
+  command=.
+
+
+* Bulk import of translations and votes
+
+  If translators prefer to work off-line with PO files, they can
+  export the PO files of a project, work on them with desktop tools
+  (like Lokalize) to translate or correct exported translations, then
+  import back the correct translations.
+
+  This can be done with the drush command =btr-vote-import
+  (btr-vote)= like this:
+  #+BEGIN_EXAMPLE
+  drush btrp-vote --user=user1 fr $(pwd)/kturtle_fr/
+  #+END_EXAMPLE
+
+  The option =--user= is required because it declares the author of
+  translations.
+
+  This is like a bulk translation and voting service. For any
+  translation in the PO files, it will be added as a suggestion if
+  such a translation does not exist, or it will just be voted if such
+  a translation already exists. In case that the translation already
+  exists but its author is not known, then the given user will be
+  recorded as the author of the translation.
+
+
+* Exporting
+
+  Translations can be exported with the drush command
+  =btr-project-export (btrp-export)=. For example:
+  #+BEGIN_EXAMPLE
+  drush btrp-export KDE kdeedu sq $(pwd)/kdeedu-sq/
+  drush btrp-export KDE kdeedu sq $(pwd)/kdeedu-sq/ \
+                    --export-mode=preferred --preferred-voters=user1,user2
+  #+END_EXAMPLE
+
+  The last argument is a directory where the PO files will be
+  exported. As always with drush, it should be an absolute path or
+  relative to Drupal root.
+
+  The export mode =most_voted= (which is the default one) exports the
+  most voted translations and suggestions.
+
+  The export mode =preferred= gives priority to translations that are
+  voted by a certain user or a group of users. It requires an
+  additional option (=preferred_voters=) to specify the user (or a
+  list of users) whose translations are preferred. If a string has no
+  translation that is voted by any of the preferred users, then the
+  most voted translation is exported.
+
+  *NOTE:* The formatting of the exported file is not exactly the same
+  as the imported file. So, these exported files cannot be used
+  directly to be commited to the project repository. Instead they
+  should be merged somehow with the existing PO files of the
+  project. This merge can be simply done by ~msgmerge~, or by tools
+  like ~lokalize~ that facilitate merging of PO files.
+
+
+* Snapshots and diffs
+
+  A /snapshot/ is an export from the DB of the current PO files of a
+  project-language. This export is stored in the DB as a TGZ
+  archive. A project has a snapshot for each language. Snapshots are
+  useful for generating the /diffs/.
+
+  A /diff/ is the difference between the snapshot and the previous
+  snapshot. The diffs are stored in the DB as well. They are
+  sequentially numbered and keep the history of changes.
+
+  There are two types of diffs that are generated and stored. One is
+  the /unified diff/ (=diff -u=) and the other the /embedded diff/
+  (generated by pology
+  [[http://websvn.kde.org/trunk/l10n-support/pology/]])
+
+  Diffs allow translators to get only the latest feedback (since the
+  last snapshot), without having to review again the suggestions made
+  previously. So, they make easier the work of the translators.
+  However the previous diffs are saved in the DB as well, in order to
+  have a full history of the suggested translations over the time.
+
+** Lifecycle of the snapshots and diffs
+
+   When a project is imported, an initial snapshot is created and
+   stored in the DB as well. This initial snapshot contains the
+   original files that were used for the import. No diff is made
+   because there is nothing to compare with.
+
+   Immediately after the initial snapshot, another snapshot is done,
+   by exporting files in the =original= mode. This snapshot will
+   generate a diff, which contains the differences that come as a
+   result of formating changes between the original PO format and the
+   exported PO format. It also contains the entries that are skipped
+   during the import. In general this diff (the first diff) contains
+   changes that are not interesting for the translator.
+
+   Then another snapshot is made, using the =most_voted= mode of
+   export, which will generate a diff that contains all the feedback
+   and suggestions made before the import. If the import is actually
+   an update (re-import) of the project, this diff contains the
+   suggestions that the translator has probably rejected previously,
+   and making this snapshot ensures that they are not suggested again
+   to him.
+
+   This logic of the initial snapshots and diffs is implemented
+   automatically during the import of the project.
+
+   Then, whenever a translator checks the latest diff, it is a good
+   idea to make a snapshot as well, which will generate the diff with
+   the previous snapshot (and store it on the DB). As a result, the
+   translations that have been already suggested to him will not be
+   suggested again.
+
+
+** Drush commands for snapshots and diffs
+
+   - btr-project-snapshot (btrp-snapshot) :: Make a snapshot of the PO
+        files for the given origin/project/lng.  Also generates the
+        diffs with the previous snapshot and saves them in DB.
+
+   - btr-project-diff-ls (btrp-diff-ls) :: Show a list of diffs for
+        the given origin/project/lng.
+
+   - btr-project-diff-get (btrp-diff-get) :: Get the content of the
+        specified diff.
+
+   - btr-project-diff (btrp-diff) :: Find differencies between the
+        last snapshot and the current state of the project.
+
+   To get more details about the arguments etc. use =drush help command=.
+
+
+** Getting diffs from the web (wget_diff.sh)
+
+   A script [[https://github.com/B-Translator/btr_server/blob/master/modules/custom/btrCore/data/utils/wget-diffs.sh][like this]] can be used by the translators to get the diffs of the
+   projects from the server, through the REST API.
+
+   #+BEGIN_EXAMPLE
+   $ utils/wget-diffs.sh
+
+   Usage: utils/wget-diffs.sh origin project lng [nr]
+
+       Get the diffs of a project using wget and the REST API.
+       If 'nr' is missing, then the list of diffs will be retrieved instead.
+       If 'nr' is '-', then the latest diffs (since the last snapshot)
+       will be computed and returned (it will take longer to execute, since
+       the diffs are calculated on the fly).
+
+   Examples:
+       utils/wget-diffs.sh KDE kdelibs sq
+       utils/wget-diffs.sh KDE kdelibs sq 1
+       utils/wget-diffs.sh KDE kdelibs sq 2
+       utils/wget-diffs.sh KDE kdelibs sq -
+
+   #+END_EXAMPLE

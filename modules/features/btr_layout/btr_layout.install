@@ -1,0 +1,64 @@
+<?php
+
+/**
+ * Implements hook_enable().
+ */
+function btr_layout_enable() {
+  _btr_layout_create_aliases();
+  _btr_layout_add_login_link();
+  _btr_layout_block_settings();
+}
+
+
+function _btr_layout_create_aliases() {
+  $aliases = array(
+    'udhezuesi' => 'Udhëzuesi i Përkthyesit',
+    'about' => 'About',
+  );
+
+  foreach ($aliases as $alias => $title) {
+    $query = "SELECT nid FROM {node} WHERE title='$title' AND status=1";
+    $nid = db_query($query)->fetchField();
+    if ($nid == FALSE)  continue;
+
+    $source = "node/$nid";
+    db_delete('url_alias')
+      ->condition('source', $source)
+      ->condition('alias', $alias)
+      ->execute();
+    $path = array(
+      'source' => $source,
+      'alias' => $alias,
+    );
+    path_save($path);
+  }
+}
+
+function _btr_layout_add_login_link() {
+  db_delete('menu_links')
+    ->condition('menu_name', 'user-menu')
+    ->condition('link_path', 'user/login')
+    ->condition('link_title', 'Login')
+    ->condition('plid', 0)
+    ->execute();
+
+  $login = array(
+    'menu_name' => 'user-menu',
+    'link_path' => 'user/login',
+    'link_title' => 'Login',
+    'plid' => '0',
+    'router_path' => 'user/login',
+  );
+  menu_link_save($login);
+}
+
+function  _btr_layout_block_settings() {
+  // disable all the blocks for theme btr_server
+  // their place is managed by module context
+  db_update('block')
+    ->fields(array(
+        'status' => 0,
+      ))
+    ->condition('theme', 'btr_server')
+    ->execute();
+}

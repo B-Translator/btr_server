@@ -1,0 +1,689 @@
+#    -*- mode: org -*-
+
+
+Archived entries from file /var/www-ssl/drupal/sites/all/modules/l10n_feedback/docs/tasks.org
+
+
+* Archive							    :ARCHIVE:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2011-12-08 Thu 07:59
+  :ARCHIVE_FILE: /var/www-ssl/drupal/sites/all/modules/l10n_feedback/docs/tasks.org
+  :ARCHIVE_CATEGORY: tasks
+  :END:
+
+** Initial Plan							    :ARCHIVE:
+   :PROPERTIES:
+   :ARCHIVE_TIME: 2011-12-02 Fri 21:52
+   :END:
+
+*** DONE Design DB schema
+    Design a propper DB schema for l10n_feedback. In general, it is
+    going to be reacher than the open-tran.eu schema, since it is going
+    to keep data about votes/evaluations/promotions of different
+    suggestions.
+
+*** DONE Get open-tran.eu data
+    Download it from: http://open-tran.eu/dev.html
+
+*** TODO Import data
+    Write a script for importing the open-tran.eu data into the
+    l10n_feedback DB (MySQL). It should:
+    1. [X] dump the data from the SQLite db
+    2. [X] import them into MySQL
+    3. [X] rearrange them to fit the new schema requirements
+    4. [ ] take care of both an initial import and an update (in the
+       case of update it should be carefull not to overwrite any
+       existing data)
+
+* TODO Write scripts for importing and updating data from *.po files
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2011-12-11 Sun 09:18
+  :ARCHIVE_FILE: /var/www-ssl/drupal/sites/all/modules/l10n_feedback/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/DB
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: TODO
+  :END:
+  + Take care to preserve the data that already exist in the DB.
+  + Check the plurals (how they are handled?).
+  + There are cases of strings where exaclty the same translation is
+    stored several times. Try to fix it.
+
+* Issues
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2011-12-28 Wed 08:52
+  :ARCHIVE_FILE: /var/www-ssl/drupal/sites/all/modules/l10n_feedback/docs/tasks.org
+  :ARCHIVE_OLPATH: Design/DB Schema
+  :ARCHIVE_CATEGORY: tasks
+  :END:
+  - Store multiple plurals in different records or in one record?
+  -
+
+* DONE Write scripts for importing and updating data from *.po files
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-01-18 Wed 03:27
+  :ARCHIVE_FILE: /var/www-ssl/drupal/sites/all/modules/l10n_feedback/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/DB
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+  + Take care to preserve the data that already exist in the DB.
+* DONE Improve hash functions for strings and translations
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-01-18 Wed 03:27
+  :ARCHIVE_FILE: /var/www-ssl/drupal/sites/all/modules/l10n_feedback/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/DB
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+* DONE Replace id-s by uid-s (universal id-s) based on hashes
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-01-18 Wed 03:27
+  :ARCHIVE_FILE: /var/www-ssl/drupal/sites/all/modules/l10n_feedback/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/DB
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+* DONE Write scripts for exporting PO files from the DB.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-01-18 Wed 03:27
+  :ARCHIVE_FILE: /var/www-ssl/drupal/sites/all/modules/l10n_feedback/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/DB
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+
+* DONE Interface *translations/vote*
+
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-01-18 Wed 03:30
+  :ARCHIVE_FILE: /var/www-ssl/drupal/sites/all/modules/l10n_feedback/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/UI
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+:END:      This is almost the same as the search interface. However, instead of
+  using a filter to select strings, they are selected randomly, based
+  on user preferencies, and also on the priorities of translation.
+
+* DONE Make ID of projects guid (because they can be used in user prefs)
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-03-18 Sun 09:37
+  :ARCHIVE_FILE: /var/www-ssl/drupal/sites/all/modules/B-Translator/tasks.org
+  :ARCHIVE_OLPATH: Tasks/DB
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+* DONE Convert to PO and import the translation files of Firefox, Mozilla, Thunderbird, etc.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-03-18 Sun 09:37
+  :ARCHIVE_FILE: /var/www-ssl/drupal/sites/all/modules/B-Translator/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+* DONE Import LibreOffice.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-03-18 Sun 09:37
+  :ARCHIVE_FILE: /var/www-ssl/drupal/sites/all/modules/B-Translator/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+* DONE Add origin on the search filter.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-03-18 Sun 09:37
+  :ARCHIVE_FILE: /var/www-ssl/drupal/sites/all/modules/B-Translator/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+* DONE Show related projects.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-03-18 Sun 09:38
+  :ARCHIVE_FILE: /var/www-ssl/drupal/sites/all/modules/B-Translator/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+* DONE Export in format diff/ediff.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-03-18 Sun 09:38
+  :ARCHIVE_FILE: /var/www-ssl/drupal/sites/all/modules/B-Translator/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+* DONE Use short url on the emails sent by cron.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-03-18 Sun 09:38
+  :ARCHIVE_FILE: /var/www-ssl/drupal/sites/all/modules/B-Translator/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+
+* DONE For each l10n string, display in which projects it occurs (related locations), etc.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-08-14 Tue 00:58
+  :ARCHIVE_FILE: /var/www-ssl/B-Translator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/UI
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+* DONE Add FB comments for each string-lng
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-08-14 Tue 00:58
+  :ARCHIVE_FILE: /var/www-ssl/B-Translator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Integration with Facebook
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+  Implemented with Disqus comments.
+* DONE Build a Drupal Installation Profile for l10n.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-08-14 Tue 00:58
+  :ARCHIVE_FILE: /var/www-ssl/B-Translator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+  Can be improved later.
+
+* DONE Add the possibility to leave comments/discussions under each string-lng
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-08-14 Tue 00:58
+  :ARCHIVE_FILE: /var/www-ssl/B-Translator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+  These can be drupal comments, or facebook comments, etc.
+  (Implemented with Disqus comments.)
+
+* DONE Is it possible to integrate with translation review with StackOverflow API?
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-08-14 Tue 00:58
+  :ARCHIVE_FILE: /var/www-ssl/B-Translator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+  Already integrated with Disqus, which is better.
+
+* DONE Use GoogleTranslate API to make an initial suggestion for strings with no translation.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-08-14 Tue 00:58
+  :ARCHIVE_FILE: /var/www-ssl/B-Translator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+  It has become commercial. Cannot be done.
+
+* DONE Fix the irc proxy on the server.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-09-26 Wed 11:56
+  :ARCHIVE_FILE: /var/www-ssl/dev.btranslator.org/profiles/btranslator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+  + https://wiki.linaro.org/Resources/HowTo/BIP
+
+* DONE Use a different database for the translation data
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-09-26 Wed 11:56
+  :ARCHIVE_FILE: /var/www-ssl/dev.btranslator.org/profiles/btranslator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+  See:
+  http://stackoverflow.com/questions/4839063/multiple-concurrent-database-connections-in-drupal-7
+
+
+* DONE Import the translation data (PO files) of other languages.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-09-26 Wed 11:57
+  :ARCHIVE_FILE: /var/www-ssl/dev.btranslator.org/profiles/btranslator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+  Import the translation data of Slovenian. Try to import the
+  translation data of German and Italian as well.
+
+* DONE Create a twitter account for btranslator and connect it to the github account.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-09-26 Wed 11:57
+  :ARCHIVE_FILE: /var/www-ssl/dev.btranslator.org/profiles/btranslator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+
+* DONE Disqus:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-09-26 Wed 11:57
+  :ARCHIVE_FILE: /var/www-ssl/dev.btranslator.org/profiles/btranslator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+  - improve the title of the disqus threads
+  - transfer domain l10n_sq to btranslator
+  - create also a domain btranslator_dev
+
+* DONE Improve the content of the notification emails.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-09-26 Wed 11:57
+  :ARCHIVE_FILE: /var/www-ssl/dev.btranslator.org/profiles/btranslator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+  Include in the message the string that is to be translated and any
+  existing translations. Include in the subject part of the string
+  that is to be translated.
+
+* DONE Install any module for sending email to all the users of l10n.org.al
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-10-12 Fri 02:48
+  :ARCHIVE_FILE: /var/www-ssl/dev.btranslator.org/profiles/btranslator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+  Try:
+  - simplenews
+  - mass_contact
+* DONE Invite all the existing users to customize their profile/settings.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-10-12 Fri 02:48
+  :ARCHIVE_FILE: /var/www-ssl/dev.btranslator.org/profiles/btranslator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+* DONE Install any module for sending invitations to other users.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-10-12 Fri 02:48
+  :ARCHIVE_FILE: /var/www-ssl/dev.btranslator.org/profiles/btranslator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+
+* DONE Create user dashboards/stats/reports.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-10-12 Fri 02:49
+  :ARCHIVE_FILE: /var/www-ssl/dev.btranslator.org/profiles/btranslator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+  - http://drupal.org/project/homebox
+  - http://drupal.org/project/user_dashboard
+  - Create custom blocks.
+
+* DONE Admin dashboards/stats/reports.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-10-12 Fri 02:49
+  :ARCHIVE_FILE: /var/www-ssl/dev.btranslator.org/profiles/btranslator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+  - http://drupal.org/documentation/modules/dashboard
+
+* DONE Import PO files of Drupal.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-10-12 Fri 02:49
+  :ARCHIVE_FILE: /var/www-ssl/dev.btranslator.org/profiles/btranslator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+* DONE Generate a POT file for B-Translator and import it.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-10-12 Fri 02:49
+  :ARCHIVE_FILE: /var/www-ssl/dev.btranslator.org/profiles/btranslator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+* DONE Import Wordpress translations into B-Translator.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-10-12 Fri 02:49
+  :ARCHIVE_FILE: /var/www-ssl/dev.btranslator.org/profiles/btranslator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+
+* DONE Try fastcgi:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-10-12 Fri 02:49
+  :ARCHIVE_FILE: /var/www-ssl/dev.btranslator.org/profiles/btranslator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc/Try to improve the performance.
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+  + http://www.netmagazine.com/features/top-15-drupal-performance-tips?goback=%2Egde_35920_member_169858052
+  + http://www.failover.co/blog/quick-setup-apache-worker-fastcgi-php-fpm-and-apc
+  + http://www.failover.co/blog/drupal-7-memcache-pecl-memcache-memcached-and-sockets-ubuntu-12-04
+
+* DONE Try to improve the performance.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-11-10 Sat 21:01
+  :ARCHIVE_FILE: /var/www-ssl/dev.btranslator.org/profiles/btranslator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+
+** DONE Try NGINX:
+   + http://arstechnica.com/business/2011/11/a-faster-web-server-ripping-out-apache-for-nginx/
+   + http://blog.celogeek.com/201209/202/how-to-configure-nginx-php-fpm-drupal-7-0/
+   + http://insready.com/blog/build-nginx-php-fpm-apc-memcache-drupal-7-bare-bone-ubuntu-1004-or-debian-5-server
+   + http://groups.drupal.org/node/238983
+   + http://groups.drupal.org/nginx
+
+* DONE Create custom blocks
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-11-10 Sat 21:01
+  :ARCHIVE_FILE: /var/www-ssl/dev.btranslator.org/profiles/btranslator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+  - Most active users and their stats.
+  - Latest vote/suggestion activity (like a stream).
+  - Personal latest activity.
+
+* CANCELED Apply mod_security on l10n.org.al
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-11-10 Sat 21:02
+  :ARCHIVE_FILE: /var/www-ssl/dev.btranslator.org/profiles/btranslator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :END:
+  Apache2 is replaced by NGINX.
+
+* DONE When a new suggestion is added, notify previous voters to review their votes.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-12-06 Thu 13:36
+  :ARCHIVE_FILE: /var/www-ssl/dev.btranslator.org/profiles/btranslator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Workflow
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+
+* DONE The author of a suggestion can modify it.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-12-06 Thu 13:36
+  :ARCHIVE_FILE: /var/www-ssl/dev.btranslator.org/profiles/btranslator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Workflow
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+  The votes of the old version are moved to the new version of the translation,
+  but the voters are notified about the change, so that they can review it,
+  if needed.
+
+* DONE Moderators can delete unacceptable translations
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-12-06 Thu 13:36
+  :ARCHIVE_FILE: /var/www-ssl/dev.btranslator.org/profiles/btranslator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Workflow
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+
+* DONE Enable export again.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-12-06 Thu 13:38
+  :ARCHIVE_FILE: /var/www-ssl/dev.btranslator.org/profiles/btranslator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+* DONE Improve export, so that different export algorithms can be used.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-12-06 Thu 13:38
+  :ARCHIVE_FILE: /var/www-ssl/dev.btranslator.org/profiles/btranslator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+  For example one export algorithm can be: my vote takes precedence.
+  This means that wherever the translator has voted, his choice will
+  prevail, otherwise the most voted translation will be exported.
+
+* DONE Create a dictionary/thesaurus with the most interesting terms and translations
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-12-29 Sat 21:46
+  :ARCHIVE_FILE: /var/www-ssl/dev.btranslator.org/profiles/btranslator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+  - Translators should be able to add new terms and translations to it.
+  - It should be possible to use it as help for translating strings.
+* DONE Make nightly exports of the active projects
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-12-29 Sat 21:46
+  :ARCHIVE_FILE: /var/www-ssl/dev.btranslator.org/profiles/btranslator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+  These are ready for download by everyone, without making
+  an export request first. But they export only the most_voted
+  translations.
+
+* DONE Enable exporting of diffs
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2012-12-29 Sat 21:46
+  :ARCHIVE_FILE: /var/www-ssl/dev.btranslator.org/profiles/btranslator/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+
+* DONE Improve the website (homepage) of the project on GitHub.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2013-07-13 Sat 23:50
+  :ARCHIVE_FILE: /var/chroot/dev/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+* DONE Create a page on Google+ for l10n-sq and btranslator.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2013-07-13 Sat 23:50
+  :ARCHIVE_FILE: /var/chroot/dev/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+* DONE Generate code documentation by phpDocu and doxygen.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2013-07-13 Sat 23:50
+  :ARCHIVE_FILE: /var/chroot/dev/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+
+* DONE Try to use a responsive layout theme (bootstrap).
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2013-07-13 Sat 23:50
+  :ARCHIVE_FILE: /var/chroot/dev/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+  Create a bootstrap subtheme in order to customize it.
+
+* DONE Reorganize features
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2013-07-13 Sat 23:50
+  :ARCHIVE_FILE: /var/chroot/dev/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+
+* DONE Separate the display interface from the database logic with a web-server API.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2014-03-01 Sat 19:41
+  :ARCHIVE_FILE: /var/chroot/dev/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+  This web-server API will also make possible the development
+  of an android app, etc
+* DONE Publish Disqus comments to twitter account @l10n_sq
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2014-03-01 Sat 19:41
+  :ARCHIVE_FILE: /var/chroot/dev/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+* DONE Publish new translations to twitter, facebook, linkedin, google+, etc.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2014-03-01 Sat 19:41
+  :ARCHIVE_FILE: /var/chroot/dev/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+
+* DONE API
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2014-03-01 Sat 19:41
+  :ARCHIVE_FILE: /var/chroot/dev/docs/tasks.org
+  :ARCHIVE_OLPATH: Tasks
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+
+  Build an API/web-service that totally separates the database from
+  the interface. Everything should be done through the
+  API/web-service.
+
+** XML-RPC interface
+   Or some other web-service (API) interface.
+
+** DONE Split the module l10n_feedback into server and client
+   These two should communicate only through the API/web-service.
+
+* DONE Test and fix the installation of a new B-Translator server.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2014-07-02 Wed 14:41
+  :ARCHIVE_FILE: /var/chroot/btr_dev/tasks/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+* DONE Export vocabulary in formats CSV, PDF, etc.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2014-07-02 Wed 14:41
+  :ARCHIVE_FILE: /var/chroot/btr_dev/tasks/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+  Exported in json, txt, org (which can be converted to html, pdf, etc.).
+* DONE Use the module MetaTags.
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2014-07-02 Wed 14:41
+  :ARCHIVE_FILE: /var/chroot/btr_dev/tasks/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+  Implemented meta-tags programatically, without the module.
+* DONE Client module for Drupal
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2014-07-02 Wed 14:41
+  :ARCHIVE_FILE: /var/chroot/btr_dev/tasks/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+  Make btrClient a completely separate Drupal module, which can be
+  installed on any drupal site.
+
+* DONE Upgrade the server on rackspace
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2014-07-02 Wed 14:41
+  :ARCHIVE_FILE: /var/chroot/btr_dev/tasks/tasks.org
+  :ARCHIVE_OLPATH: Tasks/Misc
+  :ARCHIVE_CATEGORY: tasks
+  :ARCHIVE_TODO: DONE
+  :END:
+  The server was moved to cloud.google.com, with 1.7GB RAM
+  and with almost the same price as the previous server.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

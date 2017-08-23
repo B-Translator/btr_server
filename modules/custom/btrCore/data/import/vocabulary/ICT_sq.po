@@ -1,0 +1,511 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 7.x-dev\\nPOT-Creation-Date: 2012-10-12 01:41+0200\\nPO-Revision-Date: 2012-10-12 01:49+0200\\nLast-Translator: Dashamir Hoxha <dashohoxha@gmail.com>\\nLanguage-Team: Albanian\\nMIME-Version: 1.0\\nContent-Type: text/plain; charset=UTF-8\\nContent-Transfer-Encoding: 8bit\\nPlural-Forms: nplurals=2; plural=(n != 1);\\nLanguage: sq\\n\n"
+
+msgctxt "ICT_sq"
+msgid "Vocabulary"
+msgstr "Fjalorth"
+
+msgctxt "ICT_sq"
+msgid "cookie"
+msgstr "gjurmues"
+
+msgctxt "ICT_sq"
+msgid "object"
+msgstr "send"
+
+msgctxt "ICT_sq"
+msgid "entries"
+msgstr "zërat"
+
+msgctxt "ICT_sq"
+msgid "configuration"
+msgstr "trajtësim"
+
+msgctxt "ICT_sq"
+msgid "configure"
+msgstr "trajtëso"
+
+msgctxt "ICT_sq"
+msgid "document"
+msgstr "shkresë"
+
+msgctxt "ICT_sq"
+msgid "options"
+msgstr "mundësitë"
+
+msgctxt "ICT_sq"
+msgid "path"
+msgstr "shteg"
+
+msgctxt "ICT_sq"
+msgid "shortcut"
+msgstr "shkurtore"
+
+msgctxt "ICT_sq"
+msgid "bookmark"
+msgstr "faqembajtës"
+
+msgctxt "ICT_sq"
+msgid "tab"
+msgstr "vesh"
+
+msgctxt "ICT_sq"
+msgid "selection"
+msgstr "përzgjedhje"
+
+msgctxt "ICT_sq"
+msgid "scroll"
+msgstr "lëviz"
+
+msgctxt "ICT_sq"
+msgid "tab stop"
+msgstr "ndalesa tab"
+
+msgctxt "ICT_sq"
+msgid "original"
+msgstr "fillestar"
+
+msgctxt "ICT_sq"
+msgid "fonts"
+msgstr "shkronjat"
+
+msgctxt "ICT_sq"
+msgid "frame"
+msgstr "kornizë"
+
+msgctxt "ICT_sq"
+msgid "restore"
+msgstr "rikthe"
+
+msgctxt "ICT_sq"
+msgid "print preview"
+msgstr "dukja e shtypjes"
+
+msgctxt "ICT_sq"
+msgid "computer"
+msgstr "kompjuter"
+
+msgctxt "ICT_sq"
+msgid "available"
+msgstr "në dispozicion"
+
+msgctxt "ICT_sq"
+msgid "screenshot"
+msgstr "pamje ekrani"
+
+msgctxt "ICT_sq"
+msgid "copy-paste"
+msgstr "kap-e-vendos"
+
+msgctxt "ICT_sq"
+msgid "properties"
+msgstr "vetitë"
+
+msgctxt "ICT_sq"
+msgid "run (a program)"
+msgstr "nis (një program)"
+
+msgctxt "ICT_sq"
+msgid "software"
+msgstr "program"
+
+msgctxt "ICT_sq"
+msgid "read-only"
+msgstr "vetëm-lexim"
+
+msgctxt "ICT_sq"
+msgid "read-write"
+msgstr "lexim-shkrim"
+
+msgctxt "ICT_sq"
+msgid "moderator"
+msgstr "drejtues"
+
+msgctxt "ICT_sq"
+msgid "preview"
+msgstr "para-shikim"
+
+msgctxt "ICT_sq"
+msgid "wizard"
+msgstr "udhëzues"
+
+msgctxt "ICT_sq"
+msgid "uninstallation"
+msgstr "heqje"
+
+msgctxt "ICT_sq"
+msgid "is not running"
+msgstr "nuk punon"
+
+msgctxt "ICT_sq"
+msgid "insert"
+msgstr "fut"
+
+msgctxt "ICT_sq"
+msgid "automatically"
+msgstr "vetvetiu"
+
+msgctxt "ICT_sq"
+msgid "set (the value of an attribute)"
+msgstr "cakto (vlerën e një vetie)"
+
+msgctxt "ICT_sq"
+msgid "default"
+msgstr "paracaktuar"
+
+msgctxt "ICT_sq"
+msgid "fullscreen"
+msgstr "gjithekrani"
+
+msgctxt "ICT_sq"
+msgid "settings"
+msgstr "përcaktimet"
+
+msgctxt "ICT_sq"
+msgid "debug (a program)"
+msgstr "heto (një program)"
+
+msgctxt "ICT_sq"
+msgid "debugging"
+msgstr "hetim"
+
+msgctxt "ICT_sq"
+msgid "preferencies"
+msgstr "preferencat"
+
+msgctxt "ICT_sq"
+msgid "dimension"
+msgstr "përmasë"
+
+msgctxt "ICT_sq"
+msgid "web"
+msgstr "rrjet"
+
+msgctxt "ICT_sq"
+msgid "resolution (of screen)"
+msgstr "rezolucioni (i ekranit)"
+
+msgctxt "ICT_sq"
+msgid "heading (of section)"
+msgstr "kokëzim (i pjesës)"
+
+msgctxt "ICT_sq"
+msgid "editor"
+msgstr "ndryshues"
+
+msgctxt "ICT_sq"
+msgid "ignore"
+msgstr "shpërfill"
+
+msgctxt "ICT_sq"
+msgid "index"
+msgstr "tregues"
+
+msgctxt "ICT_sq"
+msgid "autoscrolling"
+msgstr "vetlëvizje"
+
+msgctxt "ICT_sq"
+msgid "endless loop"
+msgstr "cikel i pafund"
+
+msgctxt "ICT_sq"
+msgid "skip"
+msgstr "Kaloje"
+
+msgctxt "ICT_sq"
+msgid "tutorial"
+msgstr "ushtrues"
+
+msgctxt "ICT_sq"
+msgid "reset"
+msgstr "rifillo"
+
+msgctxt "ICT_sq"
+msgid "active"
+msgstr "veprues"
+
+msgctxt "ICT_sq"
+msgid "contact"
+msgstr "lidhu"
+
+msgctxt "ICT_sq"
+msgid "character"
+msgstr "shkronja"
+
+msgctxt "ICT_sq"
+msgid "alignment"
+msgstr "radhitje"
+
+msgctxt "ICT_sq"
+msgid "position"
+msgstr "vendodhja"
+
+msgctxt "ICT_sq"
+msgid "font family"
+msgstr "lloji i shkronjave"
+
+msgctxt "ICT_sq"
+msgid "my username"
+msgstr "emërdorimi im"
+
+msgctxt "ICT_sq"
+msgid "encrypted connection"
+msgstr "lidhje e kriptuar"
+
+msgctxt "ICT_sq"
+msgid "tabs"
+msgstr "veshoret"
+
+msgctxt "ICT_sq"
+msgid "context"
+msgstr "Kontekst"
+
+msgctxt "ICT_sq"
+msgid "outline"
+msgstr "përvijim"
+
+msgctxt "ICT_sq"
+msgid "authentication"
+msgstr "vërtetësim"
+
+msgctxt "ICT_sq"
+msgid "mail server"
+msgstr "shërbyesi postar"
+
+msgctxt "ICT_sq"
+msgid "relatively"
+msgstr "varësisht"
+
+msgctxt "ICT_sq"
+msgid "background"
+msgstr "sfondi"
+
+msgctxt "ICT_sq"
+msgid "merge"
+msgstr "ndërthur"
+
+msgctxt "ICT_sq"
+msgid "information"
+msgstr "informacion"
+
+msgctxt "ICT_sq"
+msgid "ascending"
+msgstr "përpjet"
+
+msgctxt "ICT_sq"
+msgid "descending"
+msgstr "përposht"
+
+msgctxt "ICT_sq"
+msgid "subject"
+msgstr "tema"
+
+msgctxt "ICT_sq"
+msgid "about"
+msgstr "për"
+
+msgctxt "ICT_sq"
+msgid "link"
+msgstr "vegëz"
+
+msgctxt "ICT_sq"
+msgid "setup"
+msgstr "themelimi"
+
+msgctxt "ICT_sq"
+msgid "untitled"
+msgstr "patitull"
+
+msgctxt "ICT_sq"
+msgid "alignment (left or right)"
+msgstr "rreshtimi (majtas apo djathtas)"
+
+msgctxt "ICT_sq"
+msgid "footnote"
+msgstr "fusnotë"
+
+msgctxt "ICT_sq"
+msgid "text"
+msgstr "shkrim"
+
+msgctxt "ICT_sq"
+msgid "user"
+msgstr "përdorues"
+
+msgctxt "ICT_sq"
+msgid "indents"
+msgstr "dhëmbëzimet"
+
+msgctxt "ICT_sq"
+msgid "file"
+msgstr "skedar"
+
+msgctxt "ICT_sq"
+msgid "parameter"
+msgstr "parametër"
+
+msgctxt "ICT_sq"
+msgid "scope"
+msgstr "shtrirja"
+
+msgctxt "ICT_sq"
+msgid "boolean (logic, value)"
+msgstr "vërtetësie (llogjikë, vlerë)"
+
+msgctxt "ICT_sq"
+msgid "next"
+msgstr "tjetra"
+
+msgctxt "ICT_sq"
+msgid "clipboard"
+msgstr "kujtesa"
+
+msgctxt "ICT_sq"
+msgid "type"
+msgstr "lloji"
+
+msgctxt "ICT_sq"
+msgid "mail merge"
+msgstr "ndërthurja e letrave"
+
+msgctxt "ICT_sq"
+msgid "edit"
+msgstr "tëharr"
+
+msgctxt "ICT_sq"
+msgid "table cell"
+msgstr "kuti tabele"
+
+msgctxt "ICT_sq"
+msgid "interactive"
+msgstr "ndërveprues"
+
+msgctxt "ICT_sq"
+msgid "email"
+msgstr "posta elektronike"
+
+msgctxt "ICT_sq"
+msgid "initials"
+msgstr "nistoret"
+
+msgctxt "ICT_sq"
+msgid "graphic objects"
+msgstr "sende pamore"
+
+msgctxt "ICT_sq"
+msgid "relative"
+msgstr "krahasore"
+
+msgctxt "ICT_sq"
+msgid "pattern"
+msgstr "model"
+
+msgctxt "ICT_sq"
+msgid "customize"
+msgstr "përshtat"
+
+msgctxt "ICT_sq"
+msgid "section"
+msgstr "pjesë"
+
+msgctxt "ICT_sq"
+msgid "reference"
+msgstr "përmendje"
+
+msgctxt "ICT_sq"
+msgid "iteration"
+msgstr "përsëritje"
+
+msgctxt "ICT_sq"
+msgid "theme"
+msgstr "temë"
+
+msgctxt "ICT_sq"
+msgid "gravity"
+msgstr "rëndesa"
+
+msgctxt "ICT_sq"
+msgid "pipeline"
+msgstr "tunel"
+
+msgctxt "ICT_sq"
+msgid "variable"
+msgstr "ndryshore"
+
+msgctxt "ICT_sq"
+msgid "custom"
+msgstr "përshtatur"
+
+msgctxt "ICT_sq"
+msgid "define"
+msgstr "përkufizo"
+
+msgctxt "ICT_sq"
+msgid "definition"
+msgstr "përkufizim"
+
+msgctxt "ICT_sq"
+msgid "pointer"
+msgstr "shënjues"
+
+msgctxt "ICT_sq"
+msgid "null"
+msgstr "bosh"
+
+msgctxt "ICT_sq"
+msgid "error"
+msgstr "gabim"
+
+msgctxt "ICT_sq"
+msgid "footer"
+msgstr "fundor"
+
+msgctxt "ICT_sq"
+msgid "encryption"
+msgstr "shifrim"
+
+msgctxt "ICT_sq"
+msgid "decryption"
+msgstr "deshifrim"
+
+msgctxt "ICT_sq"
+msgid "online"
+msgstr "në rrjet"
+
+msgctxt "ICT_sq"
+msgid "widget"
+msgstr "vegël"
+
+msgctxt "ICT_sq"
+msgid "disable"
+msgstr "gjymtoj"
+
+msgctxt "ICT_sq"
+msgid "enable"
+msgstr "mundësoj"
+
+msgctxt "ICT_sq"
+msgid "freelancer"
+msgstr "i vetëpunësuar"
+
+msgctxt "ICT_sq"
+msgid "cloud"
+msgstr "mjegull"
+
+msgctxt "ICT_sq"
+msgid "margin"
+msgstr "hapesira"
+
+msgctxt "ICT_sq"
+msgid "justify"
+msgstr "plotesim (i rreshtit)"
+
+msgctxt "ICT_sq"
+msgid "about us"
+msgstr "kush jemi"
+
+msgctxt "ICT_sq"
+msgid "enter (data)"
+msgstr "jep (të dhëna)"

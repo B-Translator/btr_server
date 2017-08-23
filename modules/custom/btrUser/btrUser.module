@@ -1,0 +1,103 @@
+<?php
+/**
+ * @file
+ * Module file for btrUser.
+ */
+
+module_load_include('inc', 'btrCore', 'lib/query');
+module_load_include('php', 'btrCore', 'lib/btr');
+
+require_once(dirname(__FILE__) . '/include/form_alter.inc');
+require_once(dirname(__FILE__) . '/include/hook_user.inc');
+require_once(dirname(__FILE__) . '/include/oauth2_loginprovider.inc');
+require_once(dirname(__FILE__) . '/include/hybridauth.inc');
+
+
+/**
+ * Implementation of hook_permission().
+ */
+function btrUser_permission() {
+  return array(
+    'btranslator-vote' => array(
+      'title' => t('Vote translations.'),
+      'description' => t('Can submit votes (or likes) for translation suggestions.'),
+    ),
+    'btranslator-suggest' => array(
+      'title' => t('Suggest new translations.'),
+      'description' => t('Can submit new translation suggestions.'),
+    ),
+    'btranslator-flag' => array(
+      'title' => t('Flag translations.'),
+      'description' => t('Can flag translations as inaproppriate.'),
+    ),
+    'btranslator-import' => array(
+      'title' => t('Import translation (PO) files.'),
+      'description' => t('Can import to B-Translator new translation files (in the PO format).'),
+    ),
+    'btranslator-export' => array(
+      'title' => t('Export translation files.'),
+      'description' => t('Can export translations from B-Translator (either in PO format, or as diff/ediff).'),
+    ),
+    'btranslator-stats' => array(
+      'title' => t('Statistics.'),
+      'description' => t('Can access global statistics of B-Translator.'),
+    ),
+    'btranslator-resolve' => array(
+      'title' => t('Resolve issues.'),
+      'description' => t('Can resolve flag issues and other problems.'),
+    ),
+    'btranslator-admin' => array(
+      'title' => t('Administer B-Translator.'),
+      'description' => t('Can perform administration tasks for B-Translator.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_drupal_goto_alter().
+ */
+function btrUser_drupal_goto_alter(&$path, &$options, &$http_response_code) {
+  if ( ($path == 'user/login') and isset($_GET['redirect_uri'])) {
+    // Add the language to the destination, so that in case of registration
+    // through external accounts, it does not stop to ask for the language.
+    switch ($_GET['redirect_uri']) {
+      case 'https://l10n.org.al/oauth2/authorized':
+          $options['query']['destination'] .= '?lng=sq';
+          break;
+      }
+  }
+}
+
+/**
+ * Implements hook_menu_alter().
+ *
+ * Change the user account menu:
+ *  - Remove the View tab.
+ *  - Make the Profile tab the default one.
+ *  - Change the title of hybridauth.
+ */
+function btrUser_menu_alter(&$items) {
+  $user = $items['user/%user'];
+  $profile = $items['user/%user/edit-profile'];
+
+  // Remove the View tab.
+  unset($items['user/%user/view']);
+
+  // Make the Profile tab the default one.
+  $items['user/%user'] = $profile;
+  $items['user/%user']['title callback'] = $user['title callback'];
+  $items['user/%user']['title arguments'] = $user['title arguments'];
+  $items['user/%user']['menu_name'] = $user['menu_name'];
+  unset($items['user/%user']['type']);
+  unset($items['user/%user']['weight']);
+
+  $items['user/%user/edit-profile'] = array(
+    'type' =>  MENU_DEFAULT_LOCAL_TASK,
+    'title' => $profile['title'],
+    'weight' => $profile['weight'],
+    'module' => $profile['module'],
+  );
+
+  // Change the title of hybridauth.
+  $items['user/%user/hybridauth']['title'] = t('Authentication');
+}

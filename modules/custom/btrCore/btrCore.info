@@ -1,0 +1,25 @@
+name = B-Translator Data
+description = B-Translator Back-End, including data of PO files, strings, translations, votes, etc.
+package = B-Translator
+core = 7.x
+
+dependencies[] = btrUser
+dependencies[] = btrLanguages
+dependencies[] = btrTranslationProjects
+
+dependencies[] = mailsystem
+dependencies[] = mimemail
+dependencies[] = phpmailer
+dependencies[] = entity
+dependencies[] = rules
+
+dependencies[] = field_sql_storage
+dependencies[] = list
+dependencies[] = options
+dependencies[] = text
+dependencies[] = image
+dependencies[] = number
+dependencies[] = options
+
+;files[] = btrCore.test
+configure = admin/config/btr

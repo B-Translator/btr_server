@@ -1,0 +1,383 @@
+<?php
+
+/**
+ * Implements hook_entity_info().
+ */
+function btrTranslationProjects_entity_info() {
+  $info = array();
+
+  $info['project'] = array(
+    'label' => t('Translation Project'),
+    'base table' => 'translation_projects',
+    'entity keys' => array(
+      'id' => 'id',
+    ),
+    'label callback' => 'btrTranslationProjects_label_callback',
+    'entity class' => 'ProjectEntity',
+    'controller class' => 'ProjectEntityController',
+    'access callback' => 'btrTranslationProjects_access_callback',
+    'uri callback' => 'entity_class_uri',
+    'admin ui' => array(
+      'path' => 'admin/projects',
+      'controller class' => 'EntityDefaultUIController',
+    ),
+    'fieldable' => TRUE,
+    'bundles' => array(
+      'project' => array(
+        'label' => t('Translation Project'),
+        'admin' => array(
+          'path' => 'admin/projects',
+        ),
+      ),
+    ),
+    'views controller class' => 'EntityDefaultViewsController',
+    'module' => 'btrTranslationProjects',
+  );
+
+  return $info;
+}
+
+/**
+ * Label callback for project entities.
+ */
+function btrTranslationProjects_label_callback($entity, $entity_type = 'project') {
+  return $entity->lng . '/' . $entity->origin . '/' . $entity->project;
+}
+
+/**
+ * Access callback for project entities.
+ */
+function btrTranslationProjects_access_callback($op, $project = NULL, $account = NULL) {
+  switch ($op) {
+    case 'create':
+    case 'delete':
+      return in_array('administrator', $GLOBALS['user']->roles);
+      break;
+
+    case 'update':
+    case 'view':
+      if (in_array('administrator', $GLOBALS['user']->roles))  return TRUE;
+      if (in_array($GLOBALS['user']->name, $project->admins))  return TRUE;
+      return FALSE;
+      break;
+
+    default:
+      return FALSE;
+      break;
+  }
+}
+
+/**
+ * Implements hook_entity_load().
+ *
+ * Acts on entities when loaded. Gets the admins and moderators of the project
+ * from the table 'btr_user_project_roles' and sets the corresponding fields
+ * ($project->admins and $project->moderators).
+ */
+function btrTranslationProjects_entity_load($entities, $type) {
+  // Handle only the 'project' entities.
+  if ($type != 'project')  return;
+
+  foreach ($entities as $project) {
+    // Get the admins of the project.
+    $get_users = "
+      SELECT u.uid AS project
+      FROM {btr_user_project_roles} p
+      INNER JOIN {btr_users} u
+         ON (u.umail = p.umail AND u.ulng = p.ulng AND u.status = 1)
+      WHERE p.pguid = :pguid AND p.ulng = :lng AND p.role = :role
+    ";
+    $params = array(
+      ':pguid' => sha1($project->origin . $project->project),
+      ':lng' => $project->lng,
+      ':role' => 'admin',
+    );
+    $arr_uids = btr::db_query($get_users, $params)->fetchCol();
+    $users = user_load_multiple($arr_uids);
+    $arr_names = array();
+    foreach ($users as $user) {
+      $arr_names[] = $user->name;
+    }
+    $project->admins = $arr_names;
+
+    // Get the moderators of the project.
+    $params[':role'] = 'moderator';
+    $arr_uids = btr::db_query($get_users, $params)->fetchCol();
+    $users = user_load_multiple($arr_uids);
+    $arr_names = array();
+    foreach ($users as $user) {
+      $arr_names[] = $user->name;
+    }
+    $project->moderators = $arr_names;
+  }
+}
+
+/**
+ * Form definition for adding / editing a project.
+ */
+function project_form($form, &$form_state, $project = NULL) {
+
+  $form['lng'] = array(
+    '#title' => t('Language'),
+    '#type' => 'select',
+    '#options' => btr::languages_get_list(),
+    '#default_value' => isset($project->lng) ? $project->lng : 'fr',
+    '#required' => TRUE,
+    '#access' => in_array('administrator', $GLOBALS['user']->roles),
+  );
+
+  $form['origin'] = array(
+    '#title' => t('Origin'),
+    '#type' => 'textfield',
+    '#default_value' => isset($project->origin) ? $project->origin : '',
+    '#required' => TRUE,
+    '#access' => in_array('administrator', $GLOBALS['user']->roles),
+  );
+
+  $form['project'] = array(
+    '#title' => t('Project'),
+    '#type' => 'textfield',
+    '#default_value' => isset($project->project) ? $project->project : '',
+    '#required' => TRUE,
+    '#access' => in_array('administrator', $GLOBALS['user']->roles),
+  );
+
+  $form['description'] = array(
+    '#title' => t('Description'),
+    '#type' => 'textfield',
+    '#default_value' => isset($project->description) ? $project->description : '',
+  );
+
+  $form['app_url'] = array(
+    '#title' => t('App URL'),
+    '#description' => t('URL of the mobile app'),
+    '#type' => 'textfield',
+    '#default_value' => isset($project->app_url) ? $project->app_url : '',
+  );
+
+  $form['admins'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Admins'),
+    '#description' => t("Comma separated list of admin usernames."),
+    '#default_value' => isset($project->admins) ? implode(', ', $project->admins) : '',
+    '#access' => in_array('administrator', $GLOBALS['user']->roles),
+  );
+
+  $form['moderators'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Moderators'),
+    '#description' => t("Comma separated list of moderator usernames."),
+    '#default_value' => isset($project->moderators) ? implode(', ', $project->moderators) : '',
+  );
+
+  field_attach_form('project', $project, $form, $form_state);
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => isset($project->id) ? t('Update project') : t('Save project'),
+    '#weight' => 50,
+  );
+
+  return $form;
+}
+
+/**
+ * Submit handler for the project add/edit form.
+ */
+function project_form_submit($form, &$form_state) {
+  // Update admins and moderators.
+  _btrTranslationProjects_update_admins($form_state);
+
+  // Save the rest of the form.
+  $project = entity_ui_form_submit_build_entity($form, $form_state);
+  $project->save();
+
+  // Display a notification message and redirect to the list.
+  $label = btrTranslationProjects_label_callback($project);
+  drupal_set_message(t('The project: @label has been saved.',
+      array('@label' => $label)));
+  //$form_state['redirect'] = 'admin/projects';
+}
+
+/**
+ * Update admins and moderators.
+ */
+function _btrTranslationProjects_update_admins($form_state) {
+  $values = $form_state['values'];
+  $lng = $values['lng'];
+  $pguid = sha1($values['origin'] . $values['project']);
+
+  $admins = $values['admins'];
+  $arr_admins = preg_split('/ *, */', trim($admins));
+
+  // Only a site administrator can update project admins.
+  if (in_array('administrator', $GLOBALS['user']->roles)) {
+    btr::db_delete('btr_user_project_roles')
+      ->condition('pguid', $pguid)
+      ->condition('ulng', $lng)
+      ->condition('role', 'admin')
+      ->execute();
+    $q = 'SELECT init FROM {users} WHERE name IN (:arr_names) AND uid != 0';
+    $param = array(':arr_names' => $arr_admins);
+    $admin_emails = db_query($q, $param)->fetchCol();
+    foreach ($admin_emails as $umail) {
+      btr::db_insert('btr_user_project_roles')
+        ->fields(array(
+            'umail' => $umail,
+            'ulng' => $lng,
+            'pguid' => $pguid,
+            'role' => 'admin',
+          ))
+        ->execute();
+    }
+  }
+
+  // Only a site admin or project admin can update moderators.
+  if (in_array('administrator', $GLOBALS['user']->roles)
+    or in_array($GLOBALS['user']->name, $arr_admins))
+    {
+      $moderators = $values['moderators'];
+      $arr_moderators = preg_split('/ *, */', trim($moderators));
+      $q = 'SELECT init FROM {users} WHERE name IN (:arr_names) AND uid != 0';
+      $param = array(':arr_names' => $arr_moderators);
+      $moderator_emails = db_query($q, $param)->fetchCol();
+      btr::db_delete('btr_user_project_roles')
+        ->condition('pguid', $pguid)
+        ->condition('ulng', $lng)
+        ->condition('role', 'moderator')
+        ->execute();
+      foreach ($moderator_emails as $umail) {
+        btr::db_insert('btr_user_project_roles')
+          ->fields(array(
+              'umail' => $umail,
+              'ulng' => $lng,
+              'pguid' => $pguid,
+              'role' => 'moderator',
+            ))
+          ->execute();
+      }
+    }
+
+  // If a project is vocabulary, update its recipients of the contact form.
+  if ($values['origin'] == 'vocabulary') {
+    $q = 'SELECT umail FROM {btr_user_project_roles}
+          WHERE pguid = :pguid AND ulng = :ulng';
+    $param = array(':pguid' => $pguid, ':ulng' => $lng);
+    $emails = btr::db_query($q, $param)->fetchCol();
+    db_update('contact')
+      ->fields(array(
+          'recipients' => implode(',', $emails),
+        ))
+      ->condition('category', $values['project'])
+      ->execute();
+  }
+}
+
+/**
+ * Implements hook_entity_property_info().
+ */
+function btrTranslationProjects_entity_property_info() {
+  $info = array();
+
+  $info['project']['properties']['id'] = array(
+    'label' => t('Project ID'),
+    'description' => t('The ID of the project.'),
+    'type' => 'integer',
+    'schema field' => 'id',
+  );
+
+  $info['project']['properties']['lng'] = array(
+    'label' => t('Project language'),
+    'description' => t('Language of the project.'),
+    'type' => 'text',
+    'schema field' => 'lng',
+    'options list' => btr::languages_get_list(),
+    'required' => TRUE,
+  );
+
+  $info['project']['properties']['origin'] = array(
+    'label' => t('Project origin'),
+    'description' => t('Origin of the project.'),
+    'type' => 'text',
+    'schema field' => 'origin',
+    'required' => TRUE,
+  );
+
+  $info['project']['properties']['project'] = array(
+    'label' => t('Project name'),
+    'description' => t('Name of the project.'),
+    'type' => 'text',
+    'schema field' => 'project',
+    'required' => TRUE,
+  );
+
+  $info['project']['properties']['description'] = array(
+    'label' => t('Project description'),
+    'description' => t('Description of the project.'),
+    'type' => 'text',
+    'schema field' => 'description',
+  );
+
+  $info['project']['properties']['app_url'] = array(
+    'label' => t('App URL'),
+    'description' => t('URL of the mobile app.'),
+    'type' => 'text',
+    'schema field' => 'app_url',
+  );
+
+  return $info;
+}
+
+/**
+ * Extending the EntityAPIController for the Project entity.
+ */
+class ProjectEntityController extends EntityAPIController {
+
+  public function buildContent($entity, $view_mode = 'full', $langcode = NULL, $content = array()) {
+
+    $build = parent::buildContent($entity, $view_mode, $langcode, $content);
+
+    // Our additions to the $build render array.
+    $label = btrTranslationProjects_label_callback($entity);
+    $build['label'] = array(
+      '#type' => 'markup',
+      '#markup' => check_plain($label),
+      '#prefix' => '<h2 class="project-label">',
+      '#suffix' => '</h2>',
+    );
+    $build['description'] = array(
+      '#type' => 'markup',
+      '#markup' => t('Description') . ': ' . check_plain($entity->description),
+      '#prefix' => '<div class="project-description">',
+      '#suffix' => '</div>',
+    );
+    $build['app_url'] = array(
+      '#type' => 'markup',
+      '#markup' => t('App URL') . ': ' . check_plain($entity->app_url),
+      '#prefix' => '<div class="project-app-url">',
+      '#suffix' => '</div>',
+    );
+    $build['admins'] = array(
+      '#type' => 'markup',
+      '#markup' => t('Admins') . ': ' . implode(', ', $entity->admins),
+      '#prefix' => '<div class="project-admins">',
+      '#suffix' => '</div>',
+    );
+    $build['moderators'] = array(
+      '#type' => 'markup',
+      '#markup' => t('Moderators') . ': ' . implode(', ', $entity->moderators),
+      '#prefix' => '<div class="project-moderators">',
+      '#suffix' => '</div>',
+    );
+
+    return $build;
+  }
+
+}
+
+/**
+ * Project entity class extending the Entity class
+ */
+class ProjectEntity extends Entity {
+
+}
