@@ -44,7 +44,7 @@ projects[subpathauto] = 1.3
 
 ;;; User interface
 projects[context] = 3.7
-projects[views] = 3.16
+projects[views] = 3.18
 ;projects[homebox] = 2.0-rc1
 projects[boxes] = 1.2
 projects[edit_profile] = 1.0-beta2
@@ -53,7 +53,7 @@ projects[wysiwyg] = 2.4
 projects[contact_forms] = 1.8
 projects[menu_target] = 1.6
 projects[empty_front_page] = 1.0
-projects[nocurrent_pass] = 1.0
+projects[nocurrent_pass] = 1.1
 
 ;;; Security
 projects[captcha] = 1.4
@@ -116,7 +116,7 @@ libraries[tinymce][download][url] = https://github.com/tinymce/tinymce/archive/4
 ; Web Services
 ;--------------------
 
-projects[oauth2_loginprovider] = 1.9
+projects[oauth2_loginprovider] = 1.10
 
 ;--------------------
 ; HybridAuth
