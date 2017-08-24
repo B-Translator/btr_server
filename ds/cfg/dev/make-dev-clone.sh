@@ -21,7 +21,5 @@ drush @btr_dev user-create user1 --password=pass1 \
       --mail='user1@example.org' > /dev/null 2>&1
 
 ### register a test oauth2 client on btr_server
-#drush @btr_dev php-script \
-#    --script-path=/usr/local/src/btr_server/install/config \
-#    register_oauth2_client.php 'test1' '12345' \
-#    'https://btranslator.net/oauth2-client-php/authorized.php'
+drush @btr_dev oauth2-client-add test1 12345 \
+    'https://btranslator.net/oauth2-client-php/authorized.php'
