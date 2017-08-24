@@ -19,6 +19,9 @@ require_once(dirname(__FILE__) . '/btr-vocabulary-del.inc');
 require_once(dirname(__FILE__) . '/btr-vocabulary-list.inc');
 require_once(dirname(__FILE__) . '/btr-vocabulary-get.inc');
 require_once(dirname(__FILE__) . '/btr-vocabulary-import.inc');
+require_once(dirname(__FILE__) . '/btr-oauth2client-list.inc');
+require_once(dirname(__FILE__) . '/btr-oauth2client-add.inc');
+require_once(dirname(__FILE__) . '/btr-oauth2client-del.inc');
 
 /**
  * Implementation of hook_drush_command().
@@ -43,6 +46,9 @@ function btranslator_drush_command() {
     'btr-vocabulary-list' => _btr_vocabulary_list_drush_command(),
     'btr-vocabulary-get' => _btr_vocabulary_get_drush_command(),
     'btr-vocabulary-import' => _btr_vocabulary_import_drush_command(),
+    'btr-oauth2client-list' => _btr_oauth2client_list_drush_command(),
+    'btr-oauth2client-add' => _btr_oauth2client_add_drush_command(),
+    'btr-oauth2client-del' => _btr_oauth2client_del_drush_command(),
   );
 
   // These will appear in the list of topics when `drush topic` is executed.
@@ -99,6 +105,12 @@ function btranslator_drush_help($section) {
       return _btr_vocabulary_get_drush_help();
     case 'drush:btr-vocabulary-import':
       return _btr_vocabulary_import_drush_help();
+    case 'drush:btr-oauth2client-list':
+      return _btr_oauth2client_list_drush_help();
+    case 'drush:btr-oauth2client-add':
+      return _btr_oauth2client_add_drush_help();
+    case 'drush:btr-oauth2client-del':
+      return _btr_oauth2client_del_drush_help();
 
     case 'meta:btranslator:title':
       return dt("B-Translator Commands");
