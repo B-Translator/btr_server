@@ -8,7 +8,6 @@ SSHD_PORT=2201
 PORTS=""    ## no ports to be forwarded when running behind wsproxy
 
 DOMAIN="btr.example.org"
-BCL_DOMAIN='l10n.example.org'
 
 ### Gmail account for notifications.
 ### Make sure to enable less-secure-apps:

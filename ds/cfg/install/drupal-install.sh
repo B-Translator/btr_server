@@ -42,9 +42,6 @@ for lng in $LANGUAGES; do
     $drush language-add $lng
 done
 
-### set variable btr_client
-$drush vset btr_client "https://$BCL_DOMAIN"
-
 ### set the directory for uploads
 $drush vset --exact file_private_path '/var/www/uploads/'
 
