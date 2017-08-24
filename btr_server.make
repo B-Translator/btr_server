@@ -116,7 +116,7 @@ libraries[tinymce][download][url] = https://github.com/tinymce/tinymce/archive/4
 ; Web Services
 ;--------------------
 
-projects[oauth2_loginprovider] = 1.10
+projects[oauth2_loginprovider] = 1.11
 
 ;--------------------
 ; HybridAuth
