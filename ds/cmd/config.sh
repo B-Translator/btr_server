@@ -24,7 +24,7 @@ cmd_config() {
         ds runcfg dev/make-dev-clone
     fi
 
-    ds runcfg set-emailsmtp $GMAIL_ADDRESS "$GMAIL_PASSWD"
+    ds runcfg set-emailsmtp
     #ds runcfg set-domain $DOMAIN
     #ds runcfg set-adminpass "$ADMIN_PASS"
 
