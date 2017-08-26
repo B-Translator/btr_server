@@ -5,7 +5,7 @@ cd $(dirname $0)
 
 ### create the DB tables
 mysql='mysql --defaults-file=/etc/mysql/debian.cnf'
-$mysql < db/btr_schema.sql
+$mysql -D btr < db/btr_schema.sql
 
 ### import some PO files, just for testing/development
 test "$development" != 'false' && test/update.sh
