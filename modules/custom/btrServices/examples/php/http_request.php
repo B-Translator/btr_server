@@ -29,18 +29,28 @@ function http_request($url, $options =array()) {
     $header .= "Content-Length: " . strlen($data) . "\r\n";
 
     $context_options = array (
-      'http' => array (
+      'http' => array(
         'method' => 'POST',
         'header'=> $header,
         'content' => $data,
-      ));
+      ),
+      'ssl' => array(
+        'verify_peer' => FALSE,
+        'verify_peer_name' => FALSE,
+      ),
+    );
   }
   else {
     $context_options = array (
       'http' => array (
         'method' => 'GET',
         'header'=> $header,
-      ));
+      ),
+      'ssl' => array(
+        'verify_peer' => FALSE,
+        'verify_peer_name' => FALSE,
+      ),
+    );
   }
 
   // make the request and get the result
