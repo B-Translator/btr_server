@@ -76,9 +76,3 @@ $DRUPAL_DIR/profiles/btr_server/modules/custom/btrCore/data/install.sh
 ### update to the latest version of core and modules
 #$drush pm-refresh
 #$drush pm-update
-
-### refresh and update translations
-if [[ -z $DEV ]]; then
-    $drush l10n-update-refresh
-    $drush l10n-update
-fi

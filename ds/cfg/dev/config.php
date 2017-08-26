@@ -1,7 +1,7 @@
 #!/usr/local/bin/drush @btr php-script
 <?php
    /**
-    * Modifies the configuration of a B-Translator Client site
+    * Modifies the configuration of a B-Translator site
     * that is installed for development. Not required,
     * but sometimes can be useful.
     *
@@ -13,7 +13,7 @@ $tag = drush_shift();
 if ($tag == '')  $tag = 'dev';
 
 // append ($tag) to site_name
-variable_set('site_name', "B-Translator Client ($tag)");
+variable_set('site_name', "B-Translator ($tag)");
 
 $site_mail = variable_get('site_mail');
 

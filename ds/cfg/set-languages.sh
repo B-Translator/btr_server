@@ -14,11 +14,8 @@ drush @local_btr --yes php-eval "module_load_include('inc', 'btrCore', 'admin/co
 ### add these languages to drupal and import their translations
 for lng in $languages; do
     drush @local_btr --yes language-add $lng
-    drush @local_bcl --yes language-add $lng
 done
-if [[ -n $DEV ]]; then
+if [[ -z $DEV ]]; then
     drush @local_btr --yes l10n-update-refresh
     drush @local_btr --yes l10n-update
-    drush @local_bcl --yes l10n-update-refresh
-    drush @local_bcl --yes l10n-update
 fi
