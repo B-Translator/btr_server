@@ -13,11 +13,11 @@ DOMAINS="dev.btr.example.org tst.btr.example.org"  # other domains
 ### Gmail account for notifications.
 ### Make sure to enable less-secure-apps:
 ### https://support.google.com/accounts/answer/6010255?hl=en
-GMAIL_ADDRESS=
+GMAIL_ADDRESS=btr.example.org@gmail.com
 GMAIL_PASSWD=
 
 ### Admin settings.
-ADMIN_PASS=
+ADMIN_PASS=123456
 
 ### Translation languages supported by the B-Translator Server.
 ### Do not remove 'fr', because sometimes French translations
