@@ -36,8 +36,10 @@ Alias /api-examples-php /var/www/api-examples-php
 </Directory>
 EOF
 
-### link to php api examples
+### link to php api examples and fix the config
 ln -s /var/www/btr_dev/profiles/btr_server/modules/custom/btrServices/examples/php /var/www/api-examples-php
+sed -i /var/www/api-examples-php/config.php \
+    -e "/^\$base_url/ c \$base_url = 'https://dev.$DOMAIN';"
 
 cat <<EOF > /etc/apache2/conf-available/downloads.conf
 Alias /downloads /var/www/downloads
