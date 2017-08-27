@@ -16,6 +16,7 @@ cat <<EOF > /etc/apache2/sites-available/btr.conf
         DocumentRoot /var/www/btr
         <Directory /var/www/btr/>
             AllowOverride All
+            Header set Access-Control-Allow-Origin "*"
         </Directory>
 
         SSLEngine on
