@@ -10,8 +10,8 @@ rename_function cmd_create orig_cmd_create
 cmd_create() {
     local code_dir=$(dirname $(realpath $APP_DIR))
     orig_cmd_create \
-        --volume $code_dir:/usr/local/src/btr_server \
-        --volume $(pwd)/var-www:/var/www \
+        --mount type=bind,src=$code_dir,dst=/usr/local/src/btr_server \
+        --mount type=bind,src=$(pwd)/var-www,dst=/var/www \
         --workdir /var/www \
         --env CODE_DIR=/usr/local/src/btr_server \
         --env DRUPAL_DIR=/var/www/btr
