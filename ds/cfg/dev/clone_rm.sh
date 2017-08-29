@@ -26,13 +26,6 @@ mysql --defaults-file=/etc/mysql/debian.cnf \
 ### remove the configuration of apache2
 rm -f /etc/apache2/sites-{available,enabled}/$target.conf
 
-### remove from /etc/hosts
-domain=$(head -n 1 /etc/hosts.conf | cut -d' ' -f2)
-sub=${target#*_}
-hostname=$sub.$domain
-sed -i /etc/hosts.conf -e "/^127.0.0.1 $hostname/d"
-/etc/hosts_update.sh
-
 ### restart services
 /etc/init.d/mysql restart
 /etc/init.d/apache2 restart

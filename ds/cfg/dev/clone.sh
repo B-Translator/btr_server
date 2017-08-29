@@ -28,17 +28,12 @@ rm -rf $dst_dir
 cp -a $src_dir $dst_dir
 
 ### modify settings.php
-domain=$(head -n 1 /etc/hosts.conf | cut -d' ' -f2)
+domain=$(cat /etc/hostname)
 sub=${dst#*_}
 hostname=$sub.$domain
 sed -i $dst_dir/sites/default/settings.php \
     -e "/^\\\$databases = array/,+10  s/'database' => .*/'database' => '$dst',/" \
     -e "/^\\\$base_url/c \$base_url = \"https://$hostname\";"
-
-### add to /etc/hosts
-sed -i /etc/hosts.conf -e "/^127.0.0.1 $hostname/d"
-echo "127.0.0.1 $hostname" >> /etc/hosts.conf
-/etc/hosts_update.sh
 
 ### create a drush alias
 sed -i /etc/drush/local_btr.aliases.drushrc.php \

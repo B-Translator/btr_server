@@ -13,7 +13,8 @@ $tag = drush_shift();
 if ($tag == '')  $tag = 'dev';
 
 // append ($tag) to site_name
-variable_set('site_name', "B-Translator ($tag)");
+$site_name = variable_get('site_name');
+variable_set('site_name', "$site_name ($tag)");
 
 $site_mail = variable_get('site_mail');
 

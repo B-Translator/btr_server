@@ -53,8 +53,7 @@ a2enmod ssl
 a2dissite 000-default
 a2ensite btr
 a2enmod headers rewrite
-ln -sf /etc/phpmyadmin/apache.conf /etc/apache2/conf-available/phpmyadmin.conf
-a2enconf api-examples-php downloads phpmyadmin
+a2enconf api-examples-php downloads
 
 ### create a script to check for apache2, and start it if not running
 cat <<'EOF' > /usr/local/sbin/apachemonitor.sh
@@ -105,17 +104,5 @@ sed -i /etc/php/7.0/apache2/php.ini \
     -e '/^;\?cgi\.fix_pathinfo/ c cgi.fix_pathinfo = 1' \
     -e '/^;\?upload_max_filesize/ c upload_max_filesize = 16M' \
     -e '/^;\?default_socket_timeout/ c default_socket_timeout = 90'
-
-### config phpmyadmin
-if [[ -n $DEV ]]; then
-    sed -i /etc/phpmyadmin/config.inc.php \
-        -e "/Don't expire login quickly/,$ d"
-    cat <<EOF >> /etc/phpmyadmin/config.inc.php
-// Don't expire login quickly
-\$sessionDuration = 60*60*24*7; // 60*60*24*7 = one week
-ini_set('session.gc_maxlifetime', \$sessionDuration);
-\$cfg['LoginCookieValidity'] = \$sessionDuration;
-EOF
-fi
 
 service apache2 restart

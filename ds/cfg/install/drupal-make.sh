@@ -3,7 +3,7 @@
 source /host/settings.sh
 
 ### make sure that we have the right git branch on the make file
-makefile="$CODE_DIR/build-btr_server.make"
+makefile="$CODE_DIR/build-btrserver.make"
 git_branch=$(git -C $CODE_DIR branch | cut -d' ' -f2)
 sed -i $makefile \
     -e "/btr_server..download..branch/ c projects[btr_server][download][branch] = $git_branch"
@@ -38,6 +38,9 @@ cp libraries/bootstrap/less/variables.less themes/btr_server/less/
 cd $DRUPAL_DIR/profiles/btr_server/libraries/hybridauth/
 cp additional-providers/hybridauth-github/Providers/GitHub.php \
    hybridauth/Hybrid/Providers/
+
+### copy the logo file to the drupal dir
+ln -s $DRUPAL_DIR/profiles/btr_server/btr_server.png $DRUPAL_DIR/logo.png
 
 ### set propper directory permissions
 mkdir -p $DRUPAL_DIR/sites/all/translations

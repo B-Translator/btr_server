@@ -50,15 +50,9 @@ projects[boxes] = 1.2
 projects[edit_profile] = 1.0-beta2
 projects[wysiwyg] = 2.4
 
-projects[contact_forms] = 1.8
-projects[menu_target] = 1.6
-projects[empty_front_page] = 1.0
-projects[nocurrent_pass] = 1.1
-
 ;;; Security
 projects[captcha] = 1.4
 projects[recaptcha] = 2.2
-projects[honeypot] = 1.22
 projects[user_restrictions] = 1.0
 
 ;;; Features
@@ -77,8 +71,6 @@ projects[module_filter] = 2.1
 projects[drush_language] = 1.5
 projects[delete_all] = 1.1
 projects[l10n_update] = 2.1
-
-projects[advuser] = 3.x-dev
 
 ;;; Performance
 projects[boost] = 1.2
@@ -111,6 +103,17 @@ libraries[phpmailer][download][url] = https://github.com/PHPMailer/PHPMailer/arc
 libraries[tinymce][directory_name] = tinymce
 libraries[tinymce][download][type] = get
 libraries[tinymce][download][url] = https://github.com/tinymce/tinymce/archive/4.1.6.zip
+
+;--------------------
+; Misc
+;--------------------
+
+projects[contact_forms] = 1.8
+projects[menu_target] = 1.6
+projects[empty_front_page] = 1.0
+projects[nocurrent_pass] = 1.1
+projects[honeypot] = 1.22
+projects[advuser] = 3.x-dev
 
 ;--------------------
 ; Web Services

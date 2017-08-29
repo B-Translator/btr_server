@@ -4,14 +4,11 @@ source /host/settings.sh
 new_domain=${1:-$DOMAIN}
 
 ### get the current domain
-domain=$(head -n 1 /etc/hosts.conf | cut -d' ' -f2)
+domain=$(cat /etc/hostname)
 domain=${domain:-example.org}
 
-### update /etc/hostname and /etc/hosts
+### update /etc/hostname
 echo $new_domain > /etc/hostname
-sed -i /etc/hosts.conf \
-    -e "s/$domain/$new_domain/g"
-/etc/hosts_update.sh
 
 ### update apache2 config files
 for file in $(ls /etc/apache2/sites-available/btr*); do

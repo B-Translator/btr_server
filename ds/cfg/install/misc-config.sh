@@ -33,28 +33,11 @@ X11Forwarding no
 EOF
 
 echo $DOMAIN > /etc/hostname
-echo "127.0.0.1 $DOMAIN" > /etc/hosts.conf
-
-cat <<'_EOF' > /etc/hosts_update.sh
-#!/bin/bash
-### Update /etc/hosts with the entries in /etc/hosts.conf
-
-sed /etc/hosts -e '/^### update/,$ d' > /etc/hosts.new
-echo '### update' >> /etc/hosts.new
-cat /etc/hosts.conf >> /etc/hosts.new
-cat /etc/hosts.new > /etc/hosts
-rm /etc/hosts.new
-_EOF
-chmod +x /etc/hosts_update.sh
 
 cat <<_EOF > /etc/rc.local
 #!/bin/sh -e
-### update /etc/hosts with the content of /etc/hosts.conf
-/etc/hosts_update.sh
-
 ### start the watcher of comments
 $DRUPAL_DIR/profiles/btr_server/utils/watch-comments.sh &
-
 exit 0
 _EOF
 chmod +x /etc/rc.local
