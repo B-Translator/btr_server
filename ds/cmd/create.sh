@@ -9,6 +9,7 @@ _EOF
 rename_function cmd_create orig_cmd_create
 cmd_create() {
     local code_dir=$(dirname $(realpath $APP_DIR))
+    mkdir -p var-www
     orig_cmd_create \
         --mount type=bind,src=$code_dir,dst=/usr/local/src/btr_server \
         --mount type=bind,src=$(pwd)/var-www,dst=/var/www \
