@@ -15,23 +15,6 @@ tmpfs /tmp              tmpfs  defaults,noatime,mode=1777,nosuid  0 0
 tmpfs /var/log/apache2  tmpfs  defaults,noatime                   0 0
 EOF
 
-### customize the configuration of sshd
-sed -i /etc/ssh/sshd_config \
-    -e 's/^Port/#Port/' \
-    -e 's/^PasswordAuthentication/#PasswordAuthentication/' \
-    -e 's/^X11Forwarding/#X11Forwarding/'
-
-sed -i /etc/ssh/sshd_config \
-    -e '/^### custom config/,$ d'
-
-sshd_port=${SSHD_PORT:-2201}
-cat <<EOF >> /etc/ssh/sshd_config
-### custom config
-Port $sshd_port
-PasswordAuthentication no
-X11Forwarding no
-EOF
-
 echo $DOMAIN > /etc/hostname
 
 cat <<_EOF > /etc/rc.local

@@ -17,12 +17,11 @@ RUN apt-get -y install cron rsyslog logrotate ssmtp logwatch
 
 ### install lamp
 RUN DEBIAN_FRONTEND=noninteractive \
-    apt-get -y install apache2 mysql-client mysql-server phpmyadmin \
+    apt-get -y install apache2 mysql-client mysql-server \
         php-mysql php-gd php-db php-dev php-pear php-curl php-apcu
 
 ### install other tools
-RUN apt-get -y install vim git wget curl unzip make gawk diffutils \
-        ruby openssh-server openssh-client
+RUN apt-get -y install vim git wget curl unzip make gawk diffutils ruby
 
 ### install nodejs and less
 RUN apt-get -y install npm && \
