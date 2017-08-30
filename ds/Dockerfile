@@ -15,13 +15,25 @@ CMD ["/sbin/init"]
 RUN apt-get update && apt-get -y upgrade
 RUN apt-get -y install cron rsyslog logrotate ssmtp logwatch
 
-### install lamp
-RUN DEBIAN_FRONTEND=noninteractive \
-    apt-get -y install apache2 mysql-client mysql-server \
-        php-mysql php-gd php-db php-dev php-pear php-curl php-apcu
+### add apt repository ppa:ondrej/php
+RUN apt-get install -y software-properties-common && \
+    LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php && \
+    apt-get update && apt-get -y upgrade
 
 ### install other tools
-RUN apt-get -y install vim git wget curl unzip make gawk diffutils ruby
+RUN apt-get -y install vim git wget curl unzip gawk make diffutils
+
+### install lamp
+RUN DEBIAN_FRONTEND=noninteractive \
+    apt-get -y install apache2 mysql-client mysql-server php-mysql \
+        php-gd php-db php-dev php-pear php-curl php-apcu php-xml \
+        php-uploadprogress
+
+### install drush
+RUN wget http://files.drush.org/drush.phar && \
+    chmod +x drush.phar && \
+    mv drush.phar /usr/local/bin/drush && \
+    drush --yes init
 
 ### install nodejs and less
 RUN apt-get -y install npm && \
@@ -34,28 +46,9 @@ RUN curl http://hub.github.com/standalone -sLo /bin/hub && \
 
 ### install twitter cli client
 ### see: http://xmodulo.com/2013/12/access-twitter-command-line-linux.html
-RUN apt-get -y install ruby-dev && \
+RUN apt-get -y install ruby ruby-dev && \
     gem install t && \
     useradd --system --create-home twitter
-
-### install uploadprogress bar (requested by Drupal 7)
-#RUN pecl install uploadprogress
-RUN git clone https://git.php.net/repository/pecl/php/uploadprogress && \
-    cd uploadprogress/ && \
-    phpize && \
-    ./configure && \
-    make && \
-    make install && \
-    cd .. && \
-    echo "extension = uploadprogress.so" > /etc/php/7.0/mods-available/uploadprogress.ini && \
-    ln -s /etc/php/7.0/mods-available/uploadprogress.ini /etc/php/7.0/apache2/conf.d/ && \
-    rm -rf uploadprogress/
-
-### install drush
-RUN wget http://files.drush.org/drush.phar && \
-    chmod +x drush.phar && \
-    mv drush.phar /usr/local/bin/drush && \
-    drush --yes init
 
 ### install other needed tools
 RUN apt-get -y install \
@@ -66,3 +59,4 @@ RUN rm -rf /usr/local/lib/pology && \
     svn checkout -r 1387659 \
         svn://anonsvn.kde.org/home/kde/trunk/l10n-support/pology \
         /usr/local/lib/pology
+
