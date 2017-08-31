@@ -54,6 +54,7 @@ projects[wysiwyg] = 2.4
 projects[captcha] = 1.4
 projects[recaptcha] = 2.2
 projects[user_restrictions] = 1.0
+projects[user_restrictions][patch][2856139] = https://www.drupal.org/files/issues/variable_passed_by_reference-2856139-1.patch
 
 ;;; Features
 projects[features] = 2.10
