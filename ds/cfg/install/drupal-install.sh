@@ -21,7 +21,7 @@ $mysql -e "
 "
 
 ### start site installation
-sed -e '/memory_limit/ c memory_limit = -1' -i /etc/php/7.0/cli/php.ini
+sed -e '/memory_limit/ c memory_limit = -1' -i /etc/php/7.1/cli/php.ini
 cd $DRUPAL_DIR
 drush site-install --verbose --yes btr_server \
       --db-url="mysql://$db_user:$db_pass@localhost/$db_name" \
