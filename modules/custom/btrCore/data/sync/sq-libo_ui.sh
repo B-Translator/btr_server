@@ -3,7 +3,7 @@
 
 pootle=https://translations.documentfoundation.org
 lng=sq
-project=libo50_ui
+project=libo54_ui
 subproj=${1:-sw}
 name=$lng-$project-$subproj
 
