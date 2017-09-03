@@ -1,4 +1,4 @@
-#!/usr/bin/drush php-script
+#!/usr/local/bin/drush php-script
 <?php
 
 $url = 'https://dev.btr.example.org/api/report/statistics.json';

@@ -1,4 +1,4 @@
-#!/usr/bin/drush php-script
+#!/usr/local/bin/drush php-script
 <?php
 /**
  * Watch the latest Disqus comments for l10n-sq

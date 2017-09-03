@@ -44,5 +44,5 @@ cat <<EOF > /etc/cron.d/drupal7
 # Use the Linux system cron instead of Drupal's "Poor Man's Cron".
 # Note: drush cron should be run as the apache user to prevent file permissions problems
 
-0 * * * *    www-data    [ -x /usr/bin/drush ] && /usr/bin/drush @btr cron > /dev/null 2>&1
+0 * * * *    www-data    [ -x /usr/local/bin/drush ] && /usr/local/bin/drush @btr cron > /dev/null 2>&1
 EOF

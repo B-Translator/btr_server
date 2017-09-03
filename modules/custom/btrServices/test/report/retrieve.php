@@ -1,4 +1,4 @@
-#!/usr/bin/drush php-script
+#!/usr/local/bin/drush php-script
 <?php
 
 // general contribution statistics
