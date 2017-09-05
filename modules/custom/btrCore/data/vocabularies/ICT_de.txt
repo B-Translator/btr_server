@@ -1,0 +1,16 @@
+Cancel <==> abbrechen
+Contact <==> Kontakt
+Delete <==> löschen
+Done <==> fertig
+Download <==> herunterladen
+Links <==> Veweise
+Password <==> Passwort
+Profile <==> Profil
+Settings <==> Einstellungen
+Sign in <==> einloggen
+Sign out <==> ausloggen
+Sign up <==> registrieren
+Username <==> Benuztername
+Vocabulary <==> Wortschatz
+computer <==> Rechner
+edit <==> bearbeiten

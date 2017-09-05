@@ -1,0 +1,182 @@
+Private Key <==> Çelësi i Fshehtë / Çelësi Vetiak
+Public Key <==> Çelësi i Njohur / Çelësi i Hapur / Çelësi i Ditur
+Vocabulary <==> Fjalor / Fjalorth / Fjalori
+about <==> për / ç'është / Rreth
+about us <==> kush jemi
+action <==> veprim
+active <==> vepror / veprues
+adjust <==> përshtat
+alignment <==> radhitje
+alignment (left or right) <==> radhitja (majtas apo djathtas) / rreshtimi (majtas apo djathtas) / mbështetja (majtas apo djathtas)
+and <==> dhe
+approved <==> miratuar
+array <==> varg / grup / rreshtim / tabelë / rresht
+ascending <==> hypës / në ngritje / përpjet / në rritje / në ngjitje
+authentication <==> vërtetësim / autentikim / autencitet / përligjje / vërtetim i identitetit / mirëfilltësim / identifikim
+automatic <==> me vetveprim / i vetvetishëm
+automatically <==> vetvetiu / me veteveprim
+autoscrolling <==> vetlëvizje
+availability <==> gjendshmëria
+available <==> në dispozicion / i gjendshëm / i gatshëm
+background <==> sfondi / Prapaskenë / rrethina / mjedisi
+backup <==> rezervë
+badge <==> dekoratë / stemë
+big data <==> të dhëna të shumta / të dhëna voluminoze
+bookmark <==> faqembajtës / shenjues / faqeruajtës / libërshënues
+boolean (logic, value) <==> vërtetësie (llogjikë, vlerë) / buleane (llogjikë, vlerë) / buljane (llogjikë, vlerë)
+borders <==> anët
+browser <==> shfletues
+cache <==> qilar
+category <==> grupim
+character <==> shkronja
+click <==> kërcitje
+clipboard <==> tabelë mbajtëse / kujtesa
+cloud <==> shtëllungë / mjegull
+computer <==> kompjuter / kompjutër / dijepunues / maqinë llogaritëse / llogaritës / ordinator
+configuration <==> trajtësim / konfiguracion / renditje / konfigurim / formësim
+configure <==> konfiguro / formëso / trajtëso
+contact <==> kontakt / lidhu / Lidhje
+context <==> Kontekst / rrethana
+cookie <==> gjurmues / kulaç / biskotë / sheqerkë / karamele
+copy-paste <==> kopjo-e-vendos / kap-e-qit / kap-e-vi / kap-e-vendos
+custom <==> përshtatur
+customize <==> përshtat / adapto
+debug (a program) <==> heto (një program)
+debugging <==> hetim / gjetje e gabimeve / heqje e gabimeve
+decryption <==> deshifrim
+default <==> paracaktuar / parazgjedhur / implicite ??? / zakonisht
+define <==> përkufizo
+definition <==> përkufizim
+descending <==> zhdrypës / përposht / në zbritje / në zvogëlim
+dimension <==> përmasë
+directory <==> dosje
+disable <==> pamundësoj / gjymtoj / ndaloj / pengoj
+disabled <==> pamundësuar
+document <==> shkresë / Dokument
+double click <==> kërcitje dyshe
+edit <==> tëharr / përpunim / ndreq / redakto / edito / ndrysho
+editor <==> ndryshues / tëharrës / editor / Botues / përpunues / redaktor / shkrues / editues
+email <==> posta elektronike / postel / letër / posta
+emoticon <==> surrat
+enable <==> mundësoj / aktivizo / aftësoj
+enabled <==> mundësuar
+encrypted connection <==> lidhje e kriptuar / lidhje e shifruar / koneksion i enkriptuar / ndërlidhje e sigurtë / lidhje e sigurtë
+encryption <==> shifrim
+endless loop <==> cikel i pafund / vërtitje pambarim / lakim i pafund / rrotullim pa fund
+enter (data) <==> jep (të dhëna)
+entries <==> hyrjet / zërat / të dhënat, paraqitjet / futje / të hyra
+error <==> gabim
+execute <==> zbato / kryej
+explicit <==> i shprehur
+explicitly <==> shprehimisht
+file <==> skedar / fletë / Dokument / skedë / dosje / fajll
+font family <==> lloji i shkronjave / tipi i shkronjave / familja e fontit
+fonts <==> shkronjat / gërmat
+footer <==> fundor
+footnote <==> shënim / poshtëshënim / fusnotë / shënim fundor / nënshënim / futnotë
+forum <==> kuvend
+frame <==> kornizë / kuadër
+freelancer <==> i vetëpunësuar
+fullscreen <==> gjithekrani / ekran i plotë
+graphic objects <==> sende pamore
+gravity <==> rëndesa
+grid view <==> mënyra tabelore e pamjes
+guest <==> bujtës
+heading (of section) <==> kokëzim (i pjesës) / kreu (i seksionit) / titullim (i pjesës) / kryetitull (i pjesës) / kryesimi (i ndarjes)
+host <==> mbajtës / mikpritës / bartës
+ignore <==> shpërfill / injoro
+implement <==> zbatoj / vë në jetë
+implicit <==> i nënkuptuar
+indents <==> dhëmbëzimet
+index <==> tregues / indeks
+information <==> informacion / të dhëna / njohuri
+initials <==> nistoret
+insert <==> fut / ndërfut / shti / vendos
+interactive <==> ndërveprues / bashkëveprues
+internet <==> rrjet botëror / rrjet ndërkombëtar
+internet of things <==> rrjeti i paisjeve
+is not running <==> nuk punon / nuk po funksionon / nuk po ecën / nuk është në punë / nuk po punon
+item <==> njësi
+iteration <==> përsëritje
+justify <==> plotesim (i rreshtit)
+link <==> vegëz / lidhje / lidhkë / fije
+logs <==> ditar / shënime
+mail merge <==> ndërthurja e letrave
+mail server <==> shërbyesi postar / shërbyesi i postës
+margin <==> hapesira
+memory <==> kujtesa
+merge <==> ndërthur
+miscellaneous <==> gjithfarllojesh
+mode <==> mënyra
+moderator <==> moderator / drejtues / rregullator / rregullmbajtës
+mouse <==> shigjeta / miu / maus
+my username <==> emërdorimi im / emërndorimi im / paracukla ime / pseudonimi im / emri që përdor / emri im i përdoruesit / emri i përdoruesit
+network <==> rrjet pune
+next <==> tjetra / tutje
+null <==> bosh
+object <==> send / objekt
+online <==> në rrjet
+options <==> mundësitë / zgjedhshmëritë / opsionet
+original <==> fillestar / origjinal
+outline <==> përvijim
+parameter <==> parametër / përcaktues / kufizues
+path <==> shteg / rrugëzim
+pattern <==> model / veçori
+pending <==> në pritje / pezull
+permission <==> leje / lejim
+pipeline <==> tubo / tunel / tubacion
+plugin <==> shtesë
+pointer <==> shënjues
+position <==> pozicion / vendodhja
+preferencies <==> preferencat / pëlqimet / Zgjedhjet e pëlqyera / parapëlqimet / shijet
+preview <==> shikim paraprak / Pamje paraprake / parashfaqja / parashikim / pamja / para-shikim / parapamja / dukja
+print preview <==> paraqitja e shtypjes / dukja e shtypjes / parashfaqje e të shtypurit / parashfaqje e shtypjes / parashfaqje printimi / pamja e shtypjes / si do duket shtypja / si duket shtypja
+processor <==> procesor
+progress <==> përparimi
+properties <==> vetitë / veçoritë / tiparet
+proxy <==> ndërmjetës / përfaqësues
+read-only <==> vetëm-lexim / vetëm për lexim, pos për lexim / i pandryshueshëm / vetëm i lexueshëm
+read-write <==> lexim-shkrim / i ndryshueshëm
+reference <==> përmendje / adresim
+relative <==> relativ / krahasore
+relatively <==> varësisht / relativisht
+release <==> nxjerrje / lëshim
+reset <==> rifillo / rivendos
+resolution (of screen) <==> rezolucioni (i ekranit) / imtësia (e ekranit)
+restore <==> rikthe / rivendos / restauro
+router <==> rrugëzues / ndërlidhës / qarkullues
+routing <==> rrugëzim
+run (a program) <==> nis (një program) / ekzekuto (nje program) / grah (një program) / zbato (një program)
+scope <==> shtrirja
+screenshot <==> kapje ekrani / pamje ekrani / kapje ekrani, ekran i kapur
+scroll <==> lëviz
+section <==> pjesë / seksion
+selection <==> përzgjedhje
+set (the value of an attribute) <==> cakto (vlerën e një vetie) / vendos (vlerën e një vetie) / Percakto
+settings <==> përcaktimet / vendosjet / rregullimet
+setup <==> themelimi
+shortcut <==> shkurtore
+skip <==> Kaloje / anashkalo
+smiley <==> buzëqeshur
+software <==> softuer / program / soft / programet / gjëebutë
+subject <==> tema / Subjekti / Subjekt / çështja / subjekt
+support <==> përkrah
+tab <==> llapë / vesh / veshore
+tab stop <==> ndalesa tab / ndalesa e llapës
+table cell <==> kuti tabele
+tabs <==> llapat / ndalesat / veshoret
+target <==> shënjestër
+technical support <==> përkrahje teknike
+text <==> shkrim / tekst
+theme <==> temë / motiv
+toggle <==> ndërro
+tutorial <==> ushtrues / udhezues praktik / praktikues
+type <==> lloji / tipi
+uninstallation <==> deinstalim / c'instalim / heqje
+untitled <==> patitull / i patitull / i paemër / paemër / I patitulluar
+user <==> përdorues / ndorues / shfrytëzues
+variable <==> ndryshore
+web <==> rrjet / ueb
+widget <==> vegël
+wizard <==> udhëzues / udhëtregues / magjistar
+wrap <==> paketo

@@ -1,0 +1,38 @@
+Mbarim <==> Fund
+aktive <==> veprore
+automatikisht <==> vetvetiu
+bookmark <==> faqembajtës
+definicion <==> perkufizim
+dimension <==> përmasë
+directory <==> dosje
+disponoj <==> zotëroj
+dokument <==> shkresë
+email <==> posta elektronike
+fontet <==> shkronjat
+implementoj <==> zbatoj / vë në jetë
+inaktive <==> joveprore
+indeks <==> tregues
+informacion <==> dijeni
+inicialet <==> nistoret
+injoroj <==> shpërfill
+interaktiv <==> ndërveprues
+konfigurim <==> trajtësim
+konkretizim <==> sendërtim
+kontakto <==> lidhu
+object <==> objekt / send
+opsionet <==> mundësitë
+origjinal <==> fillestar
+parametër <==> përcaktues
+pasive <==> pësore
+pozicioni <==> vendodhja
+preferencat <==> shijet
+prezenca <==> prania
+relativisht <==> ndryshueshmërisht / varësisht
+rezolucioni (i ekranit) <==> imtësia (e ekranit)
+seleksionim <==> përzgjedhje
+skedar <==> fletë
+subjekti <==> çështja
+tekst <==> shkrim
+tutorial <==> ushtrues
+user <==> përdorues
+web <==> rrjet
