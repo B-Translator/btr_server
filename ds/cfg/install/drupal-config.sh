@@ -45,4 +45,5 @@ cat <<EOF > /etc/cron.d/drupal7
 # Note: drush cron should be run as the apache user to prevent file permissions problems
 
 0 * * * *    www-data    [ -x /usr/local/bin/drush ] && /usr/local/bin/drush @btr cron > /dev/null 2>&1
+9 * * * *    www-data    [ -x /usr/local/bin/drush ] && /usr/local/bin/drush @btr_dev cron > /dev/null 2>&1
 EOF
