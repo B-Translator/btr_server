@@ -27,7 +27,7 @@ RUN apt-get -y install vim git wget curl unzip gawk make diffutils
 RUN DEBIAN_FRONTEND=noninteractive \
     apt-get -y install apache2 mysql-client mysql-server php-mysql \
         php-gd php-db php-dev php-pear php-curl php-apcu php-xml \
-        php-uploadprogress
+        php-mbstring php-uploadprogress
 
 ### install drush
 RUN wget http://files.drush.org/drush.phar && \
