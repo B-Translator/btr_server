@@ -1,7 +1,7 @@
 
-# B-Translator Client
+# B-Translator
 
-Drupal installation profile for B-Translator Client.
+Drupal installation profile for B-Translator.
 
 The codename *B-Translator* can be decoded like *Bee Translator*,
 since it aims at collecting very small translation contributions from
