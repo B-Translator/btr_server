@@ -30,10 +30,10 @@ cp -a $src_dir $dst_dir
 ### modify settings.php
 domain=$(cat /etc/hostname)
 sub=${dst#*_}
-hostname=$sub.$domain
+subdomain=$sub.$domain
 sed -i $dst_dir/sites/default/settings.php \
     -e "/^\\\$databases = array/,+10  s/'database' => .*/'database' => '$dst',/" \
-    -e "/^\\\$base_url/c \$base_url = \"https://$hostname\";"
+    -e "/^\\\$base_url/c \$base_url = \"https://$subdomain\";"
 
 ### create a drush alias
 sed -i /etc/drush/local_btr.aliases.drushrc.php \
@@ -42,7 +42,7 @@ cat <<EOF >> /etc/drush/local_btr.aliases.drushrc.php
 \$aliases['$dst'] = array (
   'parent' => '@btr',
   'root' => '$dst_dir',
-  'uri' => 'http://$hostname',
+  'uri' => 'http://$subdomain',
 );
 
 EOF
@@ -61,13 +61,16 @@ drush --yes sql-sync @$src @$dst
 drush @$dst cc all
 
 ### copy and modify the configuration of apache2
-rm -f /etc/apache2/sites-{available,enabled}/$dst.conf
-cp /etc/apache2/sites-available/{$src,$dst}.conf
-sed -i /etc/apache2/sites-available/$dst.conf \
-    -e "s#ServerName .*#ServerName $hostname#" \
-    -e "s#RedirectPermanent .*#RedirectPermanent / https://$hostname/#" \
+cd /etc/apache2/
+find -L -samefile sites-available/$dst.conf | xargs rm -f
+cp sites-available/{$src,$dst}.conf
+sed -i sites-available/$dst.conf \
+    -e "s#ServerName .*#ServerName $subdomain#" \
+    -e "s#RedirectPermanent .*#RedirectPermanent / https://$subdomain/#" \
     -e "s#$src_dir#$dst_dir#g"
+ln sites-available/{$dst,$subdomain}.conf
 a2ensite $dst
+cd -
 
 ### fix permissions
 chown www-data: -R $dst_dir/sites/default/files/*

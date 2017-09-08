@@ -24,7 +24,8 @@ mysql --defaults-file=/etc/mysql/debian.cnf \
       -e "DROP DATABASE IF EXISTS $target;"
 
 ### remove the configuration of apache2
-rm -f /etc/apache2/sites-{available,enabled}/$target.conf
+cd /etc/apache2/
+find -L -samefile sites-available/$target.conf | xargs rm -f
 
 ### restart services
 /etc/init.d/mysql restart
