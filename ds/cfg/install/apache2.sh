@@ -20,8 +20,9 @@ cat <<EOF > /etc/apache2/sites-available/btr.conf
         </Directory>
 
         SSLEngine on
-        SSLCertificateFile	/etc/ssl/certs/ssl-cert-snakeoil.pem
-        SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
+        SSLCertificateFile        /etc/ssl/certs/ssl-cert-snakeoil.pem
+        SSLCertificateKeyFile   /etc/ssl/private/ssl-cert-snakeoil.key
+        #SSLCertificateChainFile  /etc/ssl/certs/ssl-cert-snakeoil.pem
 
         <FilesMatch "\.(cgi|shtml|phtml|php)$">
                         SSLOptions +StdEnvVars
