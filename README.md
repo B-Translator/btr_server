@@ -74,15 +74,15 @@ For more detailed information see: http://info.btranslator.org
     ds start
     ds snapshot
 
-    ds runcfg set-adminpass <new-drupal-admin-passwd>
-    ds runcfg set-domain <new.domain>
-    ds runcfg set-emailsmtp <gmail-user> <gmail-passwd>
-    ds runcfg oauth2-client-add <@alias> <client-key> <client-secret> <https://redirect-uri>
-    ds runcfg set-languages
+    ds inject set-adminpass.sh <new-drupal-admin-passwd>
+    ds inject set-domain.sh <new.domain>
+    ds inject set-emailsmtp.sh <gmail-user> <gmail-passwd>
+    ds inject oauth2-client-add.sh <@alias> <client-key> <client-secret> <https://redirect-uri>
+    ds inject set-languages.sh
 
-    ds runcfg dev/clone proj proj_test
-    ds runcfg dev/clone_rm proj_test
-    ds runcfg dev/clone proj proj1
+    ds inject dev/clone.sh proj proj_test
+    ds inject dev/clone_rm.sh proj_test
+    ds inject dev/clone.sh proj proj1
 
     ds backup [proj1]
     ds restore <backup-file.tgz> [proj1]
