@@ -5,11 +5,10 @@
 ### It will recount all the votes for each translation and update
 ### the field 'count' on table 'btr_translations'
 
-### mysqldump options
-dbname=${BTR_DATA:-btr_data}
-mysql="mysql --defaults-file=/etc/mysql/debian.cnf --database=$dbname"
+source /host/settings.sh
 
-### recount the number of votes and update translations
+dbname=${BTR_DATA:-${DBNAME}_data}
+mysql="mysql --host=$DBHOST --port=$DBPORT --user=$DBUSER --password='$DBPASS' --database=$dbname"
 $mysql -e "
     CREATE TEMPORARY TABLE tmp_counts AS (
         SELECT T1.tguid, count(*) AS count

@@ -3,12 +3,14 @@
 ### term autocompletion of vocabularies.
 ### Update all the mv tables.
 
+source /host/settings.sh
+
 ### go to the script directory
 cd $(dirname $0)
 
 ### mysql and mysqldump options
-dbname=${BTR_DATA:-btr_data}
-mysql="mysql --defaults-file=/etc/mysql/debian.cnf --database=$dbname -B"
+dbname=${BTR_DATA:-${DBNAME}_data}
+mysql="mysql --host=$DBHOST --port=$DBPORT --user=$DBUSER --password='$DBPASS' --database=$dbname -B"
 
 ### drop all 'btr_mv_*' tables (except 'btr_mv_sample')
 tables=$($mysql -e "SHOW TABLES" | grep '^btr_mv_' | sed -e '/btr_mv_sample/d')

@@ -11,6 +11,13 @@ DEV=true
 ### Other domains.
 DOMAINS="dev.btr.example.org"
 
+### DB settings
+DBHOST=mariadb
+DBPORT=3306
+DBNAME=btr
+DBUSER=btr
+DBPASS=btr
+
 ### Gmail account for notifications.
 ### Make sure to enable less-secure-apps:
 ### https://support.google.com/accounts/answer/6010255?hl=en

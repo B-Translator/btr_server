@@ -14,6 +14,7 @@ db_name=$1
 sql_file=$2
 
 ### execute
-mysql --defaults-file=/etc/mysql/debian.cnf \
+source /host/settings.sh
+mysql --host=$DBHOST --port=$DBPORT --user=$DBUSER --password='$DBPASS' \
       --database=$db_name < $sql_file
 

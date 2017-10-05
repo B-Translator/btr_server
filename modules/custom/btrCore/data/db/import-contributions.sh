@@ -14,7 +14,8 @@ if [ "$1" = '' ]; then usage; fi
 file_gz=$1
 
 ### mysqldump options
-mysql="mysql --defaults-file=/etc/mysql/debian.cnf"
+source /host/settings.sh
+mysql="mysql --host=$DBHOST --port=$DBPORT --user=$DBUSER --password='$DBPASS'"
 
 ### create a temporary database
 A=data_import
@@ -29,7 +30,7 @@ file_sql=${file_gz%.gz}
 $mysql -D $A < $file_sql
 
 ### get the name of database
-B=${BTR_DATA:-btr_data}
+B=${BTR_DATA:-${DBNAME}_data}
 
 ### Find multiple votes on both A_votes and B_votes and append to
 ### A_votes_trash all of them except for the latest vote.

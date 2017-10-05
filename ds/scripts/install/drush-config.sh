@@ -18,7 +18,7 @@ cat <<EOF > /etc/drush/local_btr.aliases.drushrc.php
 
 \$aliases['btr'] = array (
   'root' => '/var/www/btr',
-  'uri' => 'http://$DOMAIN',
+  'uri' => 'https://$DOMAIN',
   'path-aliases' => array (
     '%profile' => 'profiles/btr_server',
     '%data' => '/var/www/data',
@@ -31,7 +31,7 @@ cat <<EOF > /etc/drush/local_btr.aliases.drushrc.php
 // \$aliases['btr_dev'] = array (
 //   'parent' => '@btr',
 //   'root' => '/var/www/btr_dev',
-//   'uri' => 'http://dev.$DOMAIN',
+//   'uri' => 'https://dev.$DOMAIN',
 // );
 EOF
 

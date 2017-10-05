@@ -24,5 +24,5 @@ _EOF
 
 ### modify drupal variables that are used for sending email
 alias=${1:-@local_btr}
-drush --yes $alias php-script $CODE_DIR/ds/cfg/set-emailsmtp.php  \
+drush --yes $alias php-script $CODE_DIR/ds/scripts/set-emailsmtp.php  \
     "$GMAIL_ADDRESS" "$GMAIL_PASSWD"

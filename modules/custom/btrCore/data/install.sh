@@ -1,11 +1,14 @@
 #!/bin/bash
 
+source /host/settings.sh
+
 ### go to the script directory
 cd $(dirname $0)
 
 ### create the DB tables
-mysql='mysql --defaults-file=/etc/mysql/debian.cnf'
-$mysql -D btr < db/btr_schema.sql
+mysql="mysql --host=$DBHOST --port=$DBPORT --user=$DBUSER --password='$DBPASS' --database=$DBNAME"
+
+$mysql < db/btr_schema.sql
 
 ### import some PO files, just for testing/development
 test "$development" != 'false' && test/update.sh

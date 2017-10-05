@@ -2,12 +2,14 @@
 ### Export contributions from users (translations and votes)
 ### since a certain date.
 
+source /host/settings.sh
+
 ### get the arguments
 from_date=${1:-'0000-00-00'}    # in format YYYY-MM-DD
 
 ### mysqldump default options
-dbname=${BTR_DATA:-btr_data}
-mysqldump="mysqldump --defaults-file=/etc/mysql/debian.cnf --databases $dbname"
+dbname=${BTR_DATA:-${DBNAME}_data}
+mysqldump="mysqldump --host=$DBHOST --port=$DBPORT --user=$DBUSER --password='$DBPASS' --databases $dbname"
 
 ### get the dump filename
 date1=${from_date//-/}

@@ -21,4 +21,13 @@ cmd_create() {
 
     rm -f btr_server
     ln -s var-www/btr/profiles/btr_server .
+
+    # create the databases and the user
+    local dbdata="${DBNAME}_data"
+    ds @$DBHOST exec mysql -e "
+        create database if not exists $DBNAME;
+        create database if not exists ${DBNAME}_data;
+        grant all privileges on *.* to '$DBUSER'@'$CONTAINER.$NETWORK' identified by '$DBPASS';
+        flush privileges;
+    "
 }

@@ -21,8 +21,7 @@ tables="
   users
 "
 
-dbname=${BTR_DATA:-btr_data}
-mysql="mysql --defaults-file=/etc/mysql/debian.cnf -B --database=$dbname"
+mysql="mysql --host=$DBHOST --port=$DBPORT --user=$DBUSER --password='$DBPASS'"
 
 ### rename each table
 for table in $tables

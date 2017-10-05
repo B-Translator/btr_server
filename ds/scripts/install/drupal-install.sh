@@ -3,28 +3,17 @@
 source /host/settings.sh
 
 ### settings for the database and the drupal site
-db_name=btr
-db_user=btr
-db_pass=btr
 site_name="B-Translator"
 site_mail="$GMAIL_ADDRESS"
 account_name=admin
 account_pass="$ADMIN_PASS"
 account_mail="$GMAIL_ADDRESS"
 
-### create the database and user
-mysql='mysql --defaults-file=/etc/mysql/debian.cnf'
-$mysql -e "
-    DROP DATABASE IF EXISTS $db_name;
-    CREATE DATABASE $db_name;
-    GRANT ALL ON $db_name.* TO $db_user@localhost IDENTIFIED BY '$db_pass';
-"
-
 ### start site installation
 sed -e '/memory_limit/ c memory_limit = -1' -i /etc/php/7.1/cli/php.ini
 cd $DRUPAL_DIR
 drush site-install --verbose --yes btr_server \
-      --db-url="mysql://$db_user:$db_pass@localhost/$db_name" \
+      --db-url="mysql://$DBUSER:$DBPASS@$DBHOST:$DBPORT/$DBNAME" \
       --site-name="$site_name" --site-mail="$site_mail" \
       --account-name="$account_name" --account-pass="$account_pass" --account-mail="$account_mail"
 

@@ -43,7 +43,7 @@ function create_test_users() {
   $new_user = array(
     'name' => 'user0',
     'mail' => preg_replace('/@gmail.com/', '+user0@gmail.com', $site_mail),
-    'pass' => 'user0',
+    'pass' => 'pass0',
     'status' => 1,
     'init' => 'email address',
     'roles' => array(
@@ -52,8 +52,13 @@ function create_test_users() {
   );
   user_save(null, $new_user);
 
+  $new_user['name'] = 'user1';
+  $new_user['pass'] = 'pass1';
+  $new_user['mail'] = preg_replace('/@gmail.com/', '+user1@gmail.com', $site_mail);
+  user_save(null, $new_user);
+
   $new_user['name'] = 'user2';
-  $new_user['pass'] = 'user2';
+  $new_user['pass'] = 'pass2';
   $new_user['mail'] = preg_replace('/@gmail.com/', '+user2@gmail.com', $site_mail);
   user_save(null, $new_user);
 }

@@ -25,7 +25,7 @@ RUN apt-get -y install vim git wget curl unzip gawk make diffutils
 
 ### install lamp
 RUN DEBIAN_FRONTEND=noninteractive \
-    apt-get -y install apache2 mysql-client mysql-server php-mysql \
+    apt-get -y install apache2 mysql-client php-mysql \
         php-gd php-db php-dev php-pear php-curl php-apcu php-xml \
         php-mbstring php-uploadprogress
 

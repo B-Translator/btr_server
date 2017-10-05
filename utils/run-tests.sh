@@ -33,7 +33,7 @@ mkdir -p tests/
 
 ### make a backup of the database
 dbname=${LBD:-btr}
-mysqldump="mysqldump --defaults-file=/etc/mysql/debian.cnf --database=$dbname"
+mysqldump="mysqldump --host=$DBHOST --port=$DBPORT --user=$DBUSER --password=$DBPASS $DBNAME"
 $mysqldump --opt > $dump_file
 
 ### clean-up any remainings from the previous tests

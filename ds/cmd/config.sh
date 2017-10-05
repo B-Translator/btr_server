@@ -8,7 +8,6 @@ _EOF
 
 cmd_config() {
     ds inject ssmtp.sh
-    ds inject mysql.sh
     ds inject install/drupal-make.sh
     ds inject install/drupal-install.sh
     ds inject install/separate-translation-data.sh
@@ -18,12 +17,8 @@ cmd_config() {
     ds inject install/set-prompt.sh
     ds inject install/misc-config.sh
 
-    ds inject dev/make-dev-clone.sh
-    ds inject dev/config.sh @btr_dev
-
-    if [[ -n $DEV ]]; then
-        ds inject phpmyadmin.sh
-    fi
+    ds clone dev
+    ds inject dev/config.sh @btr_dev dev
 
     ds inject set-emailsmtp.sh
     #ds inject set-domain.sh $DOMAIN
