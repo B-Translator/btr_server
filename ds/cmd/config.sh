@@ -15,6 +15,7 @@ cmd_config() {
     ds inject install/drush-config.sh
     ds inject install/apache2.sh
     ds inject install/set-prompt.sh
+    ds inject install/cache-on-ram.sh
     ds inject install/misc-config.sh
 
     ds clone dev
