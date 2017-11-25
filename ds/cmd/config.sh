@@ -7,6 +7,7 @@ _EOF
 }
 
 cmd_config() {
+    ds inject ubuntu-fixes.sh
     ds inject ssmtp.sh
     ds inject install/drupal-make.sh
     ds inject install/drupal-install.sh
