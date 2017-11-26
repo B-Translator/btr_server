@@ -389,7 +389,7 @@ function btrCore_schema() {
       'sguid' => array('sguid'),
       'time' => array('time'),
       'translation_text' => array('translation'),
-      'umail' => array(array('umail', 20)),
+      'umail' => array(array('umail')),
     ),
   );
 
@@ -422,7 +422,7 @@ function btrCore_schema() {
   $schema['btr_translations_trash']['primary key'] = array();
   $schema['btr_translations_trash']['indexes']['tguid'] = array('tguid');
   $schema['btr_translations_trash']['indexes']['d_time'] = array('d_time');
-  $schema['btr_translations_trash']['indexes']['d_umail'] = array(array('d_umail', 10));
+  $schema['btr_translations_trash']['indexes']['d_umail'] = array(array('d_umail'));
 
 
   // Votes for each translation/suggestion.
@@ -468,10 +468,10 @@ function btrCore_schema() {
     ),
     'primary key' => array('vid'),
     'indexes' => array(
-      'umail_ulng_tguid' => array(array('umail', 20), 'ulng', 'tguid'),
+      'umail_ulng_tguid' => array(array('umail'), 'ulng', 'tguid'),
       'tguid' => array('tguid'),
       'time' => array('time'),
-      'umail' => array(array('umail', 20)),
+      'umail' => array(array('umail')),
     ),
   );
 
