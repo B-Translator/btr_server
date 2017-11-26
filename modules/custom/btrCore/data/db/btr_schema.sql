@@ -124,7 +124,7 @@ CREATE TABLE `btr_translations` (
   PRIMARY KEY (`tguid`),
   KEY `time` (`time`),
   KEY `sguid` (`sguid`),
-  KEY `umail` (`umail`(20)),
+  KEY `umail` (`umail`),
   FULLTEXT KEY `translation_text` (`translation`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Translations/suggestions of the l10n strings. For...';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -146,9 +146,9 @@ CREATE TABLE `btr_translations_trash` (
   `d_time` datetime NOT NULL COMMENT 'Timestamp of the deletion time.',
   KEY `time` (`time`),
   KEY `sguid` (`sguid`),
-  KEY `umail` (`umail`(10)),
+  KEY `umail` (`umail`),
   KEY `d_time` (`d_time`),
-  KEY `d_umail` (`d_umail`(10)),
+  KEY `d_umail` (`d_umail`),
   KEY `tguid` (`tguid`),
   FULLTEXT KEY `translation_text` (`translation`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Translations that are deleted are saved on the trash table.';
@@ -164,10 +164,10 @@ CREATE TABLE `btr_votes` (
   `time` datetime DEFAULT NULL COMMENT 'Timestamp of the voting time.',
   `active` tinyint(1) NOT NULL DEFAULT '1' COMMENT 'The active/deleted status of the record.',
   PRIMARY KEY (`vid`),
-  UNIQUE KEY `umail_ulng_tguid` (`umail`(20),`ulng`,`tguid`),
+  UNIQUE KEY `umail_ulng_tguid` (`umail`,`ulng`,`tguid`),
   KEY `time` (`time`),
   KEY `tguid` (`tguid`),
-  KEY `umail` (`umail`(20))
+  KEY `umail` (`umail`)
 ) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8 COMMENT='Votes for each translation/suggestion.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `btr_votes_trash`;
@@ -184,7 +184,7 @@ CREATE TABLE `btr_votes_trash` (
   KEY `time` (`time`),
   KEY `tguid` (`tguid`),
   KEY `d_time` (`d_time`),
-  KEY `umail_ulng_tguid` (`umail`(20),`ulng`,`tguid`),
+  KEY `umail_ulng_tguid` (`umail`,`ulng`,`tguid`),
   KEY `vid` (`vid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Votes that are deleted are saved on the trash table.';
 /*!40101 SET character_set_client = @saved_cs_client */;
