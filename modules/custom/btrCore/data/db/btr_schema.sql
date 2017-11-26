@@ -23,7 +23,7 @@ CREATE TABLE `btr_snapshots` (
   `uid` int(11) NOT NULL COMMENT 'Id of the user that updated the snapshot for the last time.',
   `time` datetime NOT NULL COMMENT 'The time of last update.',
   PRIMARY KEY (`pguid`,`lng`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Snapshots are tgz archives of project-lng translation files.';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Snapshots are tgz archives of project-lng translation files.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `btr_files`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -106,7 +106,7 @@ CREATE TABLE `btr_strings` (
   KEY `string` (`string`(100)),
   KEY `uid` (`uid`,`time`),
   FULLTEXT KEY `string_text` (`string`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Translatable strings that are extracted from...';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Translatable strings that are extracted from...';
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `btr_translations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -126,7 +126,7 @@ CREATE TABLE `btr_translations` (
   KEY `sguid` (`sguid`),
   KEY `umail` (`umail`),
   FULLTEXT KEY `translation_text` (`translation`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Translations/suggestions of the l10n strings. For...';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Translations/suggestions of the l10n strings. For...';
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `btr_translations_trash`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -151,7 +151,7 @@ CREATE TABLE `btr_translations_trash` (
   KEY `d_umail` (`d_umail`),
   KEY `tguid` (`tguid`),
   FULLTEXT KEY `translation_text` (`translation`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Translations that are deleted are saved on the trash table.';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Translations that are deleted are saved on the trash table.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `btr_votes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -222,5 +222,5 @@ DROP TABLE IF EXISTS `btr_mv_sample`;
 CREATE TABLE `btr_mv_sample` (
   `string` varchar(1000) COLLATE utf8_general_ci NOT NULL,
   KEY `string` (`string`(100))
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Materialized view for strings of a vocabulary (used to speed-up autocompletion).';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Materialized view for strings of a vocabulary (used to speed-up autocompletion).';
 /*!40101 SET character_set_client = @saved_cs_client */;
