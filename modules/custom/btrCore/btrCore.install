@@ -422,7 +422,7 @@ function btrCore_schema() {
   $schema['btr_translations_trash']['primary key'] = array();
   $schema['btr_translations_trash']['indexes']['tguid'] = array('tguid');
   $schema['btr_translations_trash']['indexes']['d_time'] = array('d_time');
-  $schema['btr_translations_trash']['indexes']['d_umail'] = array(array('d_umail'));
+  $schema['btr_translations_trash']['indexes']['d_umail'] = array('d_umail');
 
 
   // Votes for each translation/suggestion.
