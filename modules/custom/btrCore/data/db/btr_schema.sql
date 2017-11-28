@@ -5,8 +5,8 @@ CREATE TABLE `btr_diffs` (
   `pguid` char(40) CHARACTER SET ascii NOT NULL COMMENT 'Project Globally Unique ID, pguid = SHA1(CONCAT(origin,project))',
   `lng` varchar(5) COLLATE utf8_bin NOT NULL COMMENT 'The language of translation.',
   `nr` smallint(5) unsigned NOT NULL COMMENT 'Incremental number of the diffs of a project-language.',
-  `diff` mediumblob COMMENT 'The content of the unified diff (diff -u).',
-  `ediff` mediumblob COMMENT 'The embedded diff (generated with the command poediff of pology).',
+  `diff` longblob COMMENT 'The content of the unified diff (diff -u).',
+  `ediff` longblob COMMENT 'The embedded diff (generated with the command poediff of pology).',
   `comment` varchar(200) COLLATE utf8_bin DEFAULT NULL COMMENT 'Comment/description of the diff.',
   `uid` int(11) DEFAULT NULL COMMENT 'Id of the user that inserted the diff.',
   `time` datetime NOT NULL COMMENT 'The date and time that the diff was saved.',
@@ -19,7 +19,7 @@ DROP TABLE IF EXISTS `btr_snapshots`;
 CREATE TABLE `btr_snapshots` (
   `pguid` char(40) COLLATE utf8_bin NOT NULL COMMENT 'Reference to the project.',
   `lng` varchar(10) COLLATE utf8_bin NOT NULL COMMENT 'The language of translation.',
-  `snapshot` mediumblob NOT NULL COMMENT 'The content of the tgz archive.',
+  `snapshot` longblob NOT NULL COMMENT 'The content of the tgz archive.',
   `uid` int(11) NOT NULL COMMENT 'Id of the user that updated the snapshot for the last time.',
   `time` datetime NOT NULL COMMENT 'The time of last update.',
   PRIMARY KEY (`pguid`,`lng`)
@@ -31,7 +31,7 @@ DROP TABLE IF EXISTS `btr_files`;
 CREATE TABLE `btr_files` (
   `fid` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Auto-increment internal identifier.',
   `filename` varchar(250) COLLATE utf8_bin DEFAULT NULL COMMENT 'The path and filename of the imported PO file.',
-  `content` mediumblob NOT NULL COMMENT 'The original content of the imported file.',
+  `content` longblob NOT NULL COMMENT 'The original content of the imported file.',
   `hash` char(40) CHARACTER SET ascii NOT NULL COMMENT 'The SHA1() hash of the whole file content.',
   `potid` int(11) NOT NULL COMMENT 'Reference to the project for which this PO file is a translation.',
   `lng` varchar(10) COLLATE utf8_bin NOT NULL COMMENT 'The code of the translation language.',
