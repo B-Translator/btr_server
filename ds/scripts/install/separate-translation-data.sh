@@ -15,6 +15,7 @@ tables=$($mysql -D $DBNAME -e "SHOW TABLES" | grep '^btr_' )
 for table in $tables; do
     echo "Copy: $table"
     $mysql -e "
+        DROP TABLE IF EXISTS $dbdata.$table;
         CREATE TABLE $dbdata.$table LIKE $DBNAME.$table;
         INSERT INTO $dbdata.$table SELECT * FROM $DBNAME.$table;
     "
