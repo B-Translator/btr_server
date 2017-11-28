@@ -81,7 +81,7 @@ CREATE TABLE `btr_locations` (
   `potid` int(11) NOT NULL COMMENT 'Reference to the id of the template (POT) that contains this line.',
   `translator_comments` varchar(1000) COLLATE utf8_bin DEFAULT NULL COMMENT 'Translator comments in the PO entry (starting with "# ").',
   `extracted_comments` varchar(1000) COLLATE utf8_bin DEFAULT NULL COMMENT 'Extracted comments in the PO entry (starting with "#. ").',
-  `line_references` varchar(1000) COLLATE utf8_bin DEFAULT NULL COMMENT 'Line numbers where the sting occurs (starting with "#: ").',
+  `line_references` varchar(1000) COLLATE utf8_bin DEFAULT NULL COMMENT 'Line numbers where the string occurs (starting with "#: ").',
   `flags` varchar(1000) COLLATE utf8_bin DEFAULT NULL COMMENT 'Flags of the PO entry (starting with "#, ").',
   `previous_msgctxt` varchar(1000) COLLATE utf8_bin DEFAULT NULL COMMENT 'Previous msgctxt in the PO entry (starting with "#| msgctxt ").',
   `previous_msgid` varchar(1000) COLLATE utf8_bin DEFAULT NULL COMMENT 'Previous msgid in the PO entry (starting with "#| msgid ").',
