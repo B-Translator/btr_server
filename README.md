@@ -19,9 +19,10 @@ For more detailed information see: http://info.btranslator.org
   - First install Docker:
     https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#install-using-the-repository
 
-  - Then install `ds` and `wsproxy`:
+  - Then install `ds`, `wsproxy` and `mariadb`:
      + https://github.com/docker-scripts/ds#installation
      + https://github.com/docker-scripts/wsproxy#installation
+     + https://github.com/docker-scripts/mariadb#installation
 
 
   - Get the code from GitHub, like this:
