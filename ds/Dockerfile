@@ -30,7 +30,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
         php-mbstring php-uploadprogress
 
 ### install drush
-RUN wget http://files.drush.org/drush.phar && \
+RUN wget https://github.com/drush-ops/drush/releases/download/8.1.16/drush.phar && \
     chmod +x drush.phar && \
     mv drush.phar /usr/local/bin/drush && \
     drush --yes init

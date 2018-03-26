@@ -33,12 +33,13 @@ projects[devel] = 1.5
 projects[diff] = 3.3
 
 ;;; Extensions
-projects[ctools] = 1.12
+projects[ctools] = 1.14
 projects[libraries] = 2.3
-projects[entity] = 1.8
+projects[entity] = 1.9
 projects[xautoload] = 5.7
 projects[token] = 1.7
 projects[rules] = 2.10
+projects[rules][patch][2923477] = https://www.drupal.org/files/issues/php7_2_compatibility-2923477-5.patch
 projects[pathauto] = 1.3
 projects[subpathauto] = 1.3
 
@@ -110,7 +111,7 @@ libraries[tinymce][download][url] = https://github.com/tinymce/tinymce/archive/4
 ;--------------------
 
 projects[contact_forms] = 1.8
-projects[menu_target] = 1.6
+projects[menu_target] = 1.7
 projects[empty_front_page] = 1.0
 projects[nocurrent_pass] = 1.1
 projects[honeypot] = 1.22
