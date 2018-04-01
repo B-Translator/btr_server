@@ -5,11 +5,11 @@
  */
 
 // Define the database of B-Translator.
-if (isset($GLOBALS['databases']['btr_db']['default'])) {
-  define('BTR_DB', 'btr_db');
+if (isset($GLOBALS['databases']['btr_data']['default'])) {
+  define('BTR_DATA', 'btr_data');
  }
  else {
-   define('BTR_DB', 'default');
+   define('BTR_DATA', 'default');
  }
 
 require_once(dirname(__FILE__) . '/btrCore.menu.inc');

@@ -14,7 +14,7 @@ function get_db_connection(&$options) {
   if (empty($options['target'])) {
     $options['target'] = 'default';
   }
-  return Database::getConnection($options['target'], BTR_DB);
+  return Database::getConnection($options['target'], BTR_DATA);
 }
 
 /**

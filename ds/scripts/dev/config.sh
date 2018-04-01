@@ -4,10 +4,10 @@ alias=${1:-@local_btr}
 tag=$2
 
 if [[ $alias == '@btr_dev' ]]; then
-    ### comment out the configuration of the database 'btr_db' so that
+    ### comment out the configuration of the database 'btr_data' so that
     ### the internal test database can be used instead for translations
     sed -i /var/www/btr_dev/sites/default/settings.php \
-        -e '/$databases..btr_db/,+8 s#^/*#//#'
+        -e '/$databases..btr_data/,+8 s#^/*#//#'
 
     ### register a test oauth2 client on btr_server
     drush @btr_dev oauth2-client-add test1 12345 \

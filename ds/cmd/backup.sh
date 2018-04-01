@@ -72,7 +72,7 @@ _make_full_backup() {
     ds exec drush @btr sql-dump --ordered-dump \
        --result-file=/host/$backup/btr.sql
     ds exec drush @btr sql-dump --ordered-dump \
-       --database=btr_db \
+       --database=btr_data \
        --result-file=/host/$backup/btr_data.sql
     ds exec drush @btr_dev sql-dump --ordered-dump \
        --result-file=/host/$backup/btr_dev.sql
@@ -89,5 +89,25 @@ _make_full_backup() {
 }
 
 _make_diff_backup() {
-    :
+    # create the backup dir
+    local backup="backup-full-$(date +%Y%m%d)"
+    rm -rf $backup
+    rm -f $backup.tgz
+    mkdir $backup
+
+    # disable the site for maintenance
+    ds exec drush --yes @local_btr vset maintenance_mode 1
+
+    # clear the cache
+    ds exec drush --yes @local_btr cache-clear all
+
+
+
+
+    # make the backup archive
+    tar --create --gzip --preserve-permissions --file=$backup.tgz $backup/
+    rm -rf $backup/
+
+    # enable the site
+    ds exec drush --yes @local_btr vset maintenance_mode 0
 }

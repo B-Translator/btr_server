@@ -35,7 +35,7 @@ cat << EOF >> $drupal_settings
  * (testing new drupal features) can connect to the
  * same translation database.
  */
-\$databases['btr_db']['default'] = array (
+\$databases['btr_data']['default'] = array (
     'database' => '$dbdata',
     'username' => '$DBUSER',
     'password' => '$DBPASS',

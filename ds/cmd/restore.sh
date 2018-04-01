@@ -74,9 +74,9 @@ _make_full_restore() {
     ds exec drush @btr_dev sql-drop --yes
     ds exec drush @btr_dev sql-query \
        --file=/host/$backup/btr_dev.sql
-    ds exec drush @btr sql-drop --database=btr_db --yes
+    ds exec drush @btr sql-drop --database=btr_data --yes
     ds exec drush @btr sql-query \
-       --database=btr_db \
+       --database=btr_data \
        --file=/host/$backup/btr_data.sql
 
     # restore application files

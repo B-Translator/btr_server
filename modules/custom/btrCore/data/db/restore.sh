@@ -22,7 +22,7 @@ backup_dir=$(ls -dt /tmp/btr-backup-*/ | head -n 1)
 ### execute the sql scripts of the backup
 drush @bcl sql-query --file=$backup_dir/bcl.sql
 drush @btr sql-query --file=$backup_dir/btr.sql
-$(drush @btr sql-connect --database=btr_db) < $backup_dir/btr_data.sql
+$(drush @btr sql-connect --database=btr_data) < $backup_dir/btr_data.sql
 
 ### cleanup
 rm -rf $backup_dir
