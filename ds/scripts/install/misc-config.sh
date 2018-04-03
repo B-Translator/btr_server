@@ -52,14 +52,14 @@ EOF
 
 # setup cron
 cat <<EOF > /etc/cron.d/twitter
-0 4 * * *  twitter  $DRUPAL_DIR/profiles/btr_server/utils/twitter.sh > /dev/null 2>&1
+#0 4 * * *  twitter  $DRUPAL_DIR/profiles/btr_server/utils/twitter.sh > /dev/null 2>&1
 
 ### uncomment this line only for debugging
 #*/5 * * * *  twitter  $DRUPAL_DIR/profiles/btr_server/utils/twitter.sh
 EOF
 
 cat <<EOF > /etc/cron.d/fortune
-0 */5 * * *  twitter  $DRUPAL_DIR/profiles/btr_server/utils/fortune.sh > /dev/null 2>&1
+#0 */5 * * *  twitter  $DRUPAL_DIR/profiles/btr_server/utils/fortune.sh > /dev/null 2>&1
 
 ### uncomment this line only for debugging
 #*/5 * * * *  twitter  $DRUPAL_DIR/profiles/btr_server/utils/fortune.sh
