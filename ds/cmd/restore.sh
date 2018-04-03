@@ -20,8 +20,8 @@ cmd_restore() {
         full)
             _make_full_restore $file
             ;;
-        diff)
-            _make_diff_restore $file
+        data)
+            ds inject restore.sh $file
             ;;
         *)
             _make_app_restore $file
@@ -88,8 +88,4 @@ _make_full_restore() {
 
     # enable the site
     ds exec drush --yes @local_btr vset maintenance_mode 0
-}
-
-_make_diff_restore() {
-    :
 }
