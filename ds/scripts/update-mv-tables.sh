@@ -3,14 +3,13 @@
 ### term autocompletion of vocabularies.
 ### Update all the mv tables.
 
-source /host/settings.sh
+#source /host/settings.sh
 
-### go to the script directory
-cd $(dirname $0)
+set -x
 
-### mysql and mysqldump options
-dbname=${BTR_DATA:-${DBNAME}_data}
-mysql="mysql --host=$DBHOST --port=$DBPORT --user=$DBUSER --password='$DBPASS' --database=$dbname -B"
+### mysql options
+mysql=$(drush @btr sql-connect --database=btr_data)
+mysql+=' -B'
 
 ### drop all 'btr_mv_*' tables (except 'btr_mv_sample')
 tables=$($mysql -e "SHOW TABLES" | grep '^btr_mv_' | sed -e '/btr_mv_sample/d')
@@ -20,7 +19,7 @@ do
 done
 
 ### for each vocabulary create a mv table
-vocabularies=$(drush btr-vocabulary-list | gawk '{print $2 "_" $1}')
+vocabularies=$(drush @btr btr-vocabulary-list | gawk '{print $2 "_" $1}')
 for vocabulary in $vocabularies
 do
     table="btr_mv_${vocabulary,,}"
