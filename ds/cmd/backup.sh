@@ -1,7 +1,6 @@
 cmd_backup_help() {
     cat <<_EOF
-    backup [full | diff | <app>]
-        Make a backup of files, databases, etc.
+    backup [full | data | <app>]
         'full' make a full backup of everything
         'data' make a backup of the important data only
         <app> can be 'btr', 'btr_dev', etc.
@@ -10,6 +9,7 @@ _EOF
 }
 
 cmd_backup() {
+    set -x
     local arg=${1:-full}
     case $arg in
         full)
