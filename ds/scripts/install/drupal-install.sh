@@ -10,7 +10,7 @@ account_pass="$ADMIN_PASS"
 account_mail="$GMAIL_ADDRESS"
 
 ### start site installation
-sed -e '/memory_limit/ c memory_limit = -1' -i /etc/php/7.1/cli/php.ini
+sed -e '/memory_limit/ c memory_limit = -1' -i /etc/php/7.2/cli/php.ini
 cd $DRUPAL_DIR
 drush site-install --verbose --yes btr_server \
       --db-url="mysql://$DBUSER:$DBPASS@$DBHOST:$DBPORT/$DBNAME" \
