@@ -21,6 +21,7 @@ cmd_restore() {
             _make_full_restore $file
             ;;
         data)
+            _make_data_restore $file
             ds inject restore.sh $file
             ;;
         *)
@@ -82,6 +83,29 @@ _make_full_restore() {
     # restore application files
     rm -rf var-www/{btr,btr_dev,downloads}
     cp -a $backup/{btr,btr_dev,downloads} var-www/
+
+    # clean up
+    rm -rf $backup
+
+    # enable the site
+    ds exec drush --yes @local_btr vset maintenance_mode 0
+}
+
+_make_data_restore() {
+    # disable the site for maintenance
+    ds exec drush --yes @local_btr vset maintenance_mode 1
+
+    # extract the backup archive
+    tar --extract --gunzip --preserve-permissions --file=$file
+
+    # get the name of the backup dir
+    local file=$1
+    local backup=${file%%.tgz}
+    backup=$(basename $backup)
+
+    # restore the data from the backup dir
+    ds inject restore.sh $backup
+    [[ -f restore.sh ]] && source restore.sh
 
     # clean up
     rm -rf $backup

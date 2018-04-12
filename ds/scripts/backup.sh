@@ -78,29 +78,11 @@ backup_config() {
 }
 
 
-# create the backup dir
-backup="backup-data-$(date +%Y%m%d)"
-cd /host/
-rm -rf $backup
-rm -f $backup.tgz
-mkdir $backup
-cd $backup/
-
-# disable the site for maintenance
-drush --yes @local_btr vset maintenance_mode 1
-
-# clear the cache
-drush --yes @local_btr cache-clear all
+# go to the backup dir
+backup=$1
+cd /host/$backup
 
 # make the backup
 backup_vocabularies
 backup_data
 backup_config
-
-# make the backup archive
-cd /host/
-tar --create --gzip --preserve-permissions --file=$backup.tgz $backup/
-rm -rf $backup/
-
-# enable the site
-drush --yes @local_btr vset maintenance_mode 0

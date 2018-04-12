@@ -36,27 +36,11 @@ restore_config() {
 }
 
 
-# disable the site for maintenance
-drush --yes @local_btr vset maintenance_mode 1
-drush --yes @local_btr cache-clear all
-
-# extract the backup archive
-file=$1
-cd /host/
-tar --extract --gunzip --preserve-permissions --file=$file
-backup=${file%%.tgz}
-backup=$(basename $backup)
-cd $backup/
+# go to the backup directory
+backup=$1
+cd /host/$backup
 
 # restore
 restore_vocabularies
 restore_data
 restore_config
-
-# clean up
-cd /host/
-rm -rf $backup
-
-# enable the site
-drush --yes @local_btr cache-clear all
-drush --yes @local_btr vset maintenance_mode 0
