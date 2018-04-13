@@ -22,7 +22,6 @@ cmd_restore() {
             ;;
         data)
             _make_data_restore $file
-            ds inject restore.sh $file
             ;;
         *)
             _make_app_restore $file
