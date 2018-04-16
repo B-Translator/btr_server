@@ -47,6 +47,9 @@ $drush features-revert btr_misc
 $drush pm-enable btr_layout
 $drush features-revert btr_layout
 
+$drush pm-enable bootstrap
+$drush pm-enable btr_server
+
 $drush pm-enable btr_hybridauth
 $drush features-revert btr_hybridauth
 

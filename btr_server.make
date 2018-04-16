@@ -11,7 +11,7 @@ defaults[projects][subdir] = contrib
 ; Bootstrap Theme
 ;--------------------
 
-projects[bootstrap] = 3.14
+projects[bootstrap] = 3.19
 projects[jquery_update] = 3.0-alpha5
 projects[less] = 4.0
 
@@ -45,7 +45,7 @@ projects[subpathauto] = 1.3
 
 ;;; User interface
 projects[context] = 3.7
-projects[views] = 3.19
+projects[views] = 3.20
 ;projects[homebox] = 2.0-rc1
 projects[boxes] = 1.2
 projects[edit_profile] = 1.0-beta2
