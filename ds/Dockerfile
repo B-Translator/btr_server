@@ -25,9 +25,11 @@ RUN apt-get -y install vim git wget curl unzip gawk make diffutils
 
 ### install lamp
 RUN DEBIAN_FRONTEND=noninteractive \
-    apt-get -y install apache2 mysql-client php-mysql \
-        php-gd php-db php-dev php-pear php-curl php-apcu php-xml \
-        php-mbstring php-uploadprogress
+    apt-get -y install apache2 mysql-client php7.1 php7.1-mysql \
+        php7.1-gd php7.1-db php7.1-dev php-pear php7.1-curl \
+        php7.1-apcu php7.1-xml php7.1-mbstring php7.1-uploadprogress
+RUN update-alternatives --set php /usr/bin/php7.1 && \
+    a2dismod php7.2 && a2enmod php7.1
 
 ### install drush
 RUN wget https://github.com/drush-ops/drush/releases/download/8.1.16/drush.phar && \
@@ -59,4 +61,3 @@ RUN rm -rf /usr/local/lib/pology && \
     svn checkout -r 1387659 \
         svn://anonsvn.kde.org/home/kde/trunk/l10n-support/pology \
         /usr/local/lib/pology
-

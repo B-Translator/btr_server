@@ -81,7 +81,7 @@ chmod +x /etc/cron.d/apachemonitor
 
 ### limit the memory size of apache2 when developing
 if [[ -n $DEV ]]; then
-    sed -i /etc/php/7.2/apache2/php.ini \
+    sed -i /etc/php/7.1/apache2/php.ini \
         -e '/^\[PHP\]/ a apc.rfc1867 = 1' \
         -e '/^display_errors/ c display_errors = On'
 
@@ -93,13 +93,13 @@ if [[ -n $DEV ]]; then
 fi
 
 ### modify the configuration of php
-cat <<EOF > /etc/php/7.2/mods-available/apcu.ini
+cat <<EOF > /etc/php/7.1/mods-available/apcu.ini
 extension=apcu.so
 apcu.mmap_file_mask=/tmp/apcu.XXXXXX
 apcu.shm_size=96M
 EOF
 
-sed -i /etc/php/7.2/apache2/php.ini \
+sed -i /etc/php/7.1/apache2/php.ini \
     -e '/^;\?memory_limit/ c memory_limit = 200M' \
     -e '/^;\?max_execution_time/ c max_execution_time = 90' \
     -e '/^;\?display_errors/ c display_errors = On' \
