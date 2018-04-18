@@ -93,24 +93,20 @@
    #+BEGIN_EXAMPLE
    #!/bin/bash -x
 
-   ### go to the script directory
-   cd $(dirname $0)
-
-   ### set the drush alias
-   drush="drush $1"
+   site=${1:-@btr}
 
    ### set some variables
    origin=Test
    project=Pingus
-   dir=$(pwd)/pingus
+   dir=/var/www/data/test/po_files
 
    ### create the project
-   $drush btrp-add $origin $project $dir/pingus-fr.po
+   drush $site btrp-add $origin $project $dir/pingus-fr.po
 
    ### import the PO files of each language
    for lng in fr sq
    do
-       $drush btrp-import $origin $project $lng $dir/pingus-$lng.po
+       drush $site btrp-import $origin $project $lng $dir/pingus-$lng.po
    done
    #+END_EXAMPLE
 

@@ -1,21 +1,17 @@
 #!/bin/bash
 
-### go to the script directory
-cd $(dirname $0)
-
-### set drush root
-drush="drush --root=/var/www/btr"
+site=${1:-@btr}
 
 ### set some variables
 origin=test
 project=kdeadmin
-path=$(pwd)/po_files
+path=/var/www/data/test/po_files
 
 ### create the project
-$drush btrp-add $origin $project $path/kdeadmin-fr/
+drush $site btrp-add $origin $project $path/kdeadmin-fr/
 
 ### import the PO files of each language
 for lng in fr sq
 do
-    $drush btrp-import $origin $project $lng $path/kdeadmin-$lng/
+    drush $site btrp-import $origin $project $lng $path/kdeadmin-$lng/
 done

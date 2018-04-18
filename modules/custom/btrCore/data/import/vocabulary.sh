@@ -1,5 +1,5 @@
 #!/bin/bash -x
-### Import the vocabulary projects.
+### Create vocabulary projects.
 
 ### go to the script directory
 cd $(dirname $0)

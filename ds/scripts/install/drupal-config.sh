@@ -13,6 +13,32 @@ drupal_settings=$DRUPAL_DIR/sites/default/settings.php
 chown root:www-data $drupal_settings
 chmod 640 $drupal_settings
 
+# configure the database of the translation data
+sed -e '/===== APPENDED BY INSTALLATION SCRIPTS =====/,$ d' -i $drupal_settings
+dbdata="${DBNAME:-btr}_data"
+cat << EOF >> $drupal_settings
+//===== APPENDED BY INSTALLATION SCRIPTS =====
+
+/**
+ * Use a separate database for the translation data.
+ * This provides more flexibility. For example the
+ * drupal site and the translation data can be backuped
+ * and restored separately. Or a test drupal site
+ * (testing new drupal features) can connect to the
+ * same translation database.
+ */
+\$databases['btr_data']['default'] = array (
+    'database' => '$dbdata',
+    'username' => '$DBUSER',
+    'password' => '$DBPASS',
+    'host' => '$DBHOST',
+    'port' => '$DBPORT',
+    'driver' => 'mysql',
+    'prefix' => '',
+);
+
+EOF
+
 # set base_url
 cat << EOF >> $drupal_settings
 \$base_url = "https://$DOMAIN";
