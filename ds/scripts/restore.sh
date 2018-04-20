@@ -44,3 +44,6 @@ cd /host/$backup
 restore_vocabularies
 restore_data
 restore_config
+
+# custom restore script
+[[ -f /host/restore.sh ]] && source /host/restore.sh

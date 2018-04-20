@@ -104,7 +104,6 @@ _make_data_restore() {
 
     # restore the data from the backup dir
     ds inject restore.sh $backup
-    [[ -f restore.sh ]] && source restore.sh
 
     # clean up
     rm -rf $backup

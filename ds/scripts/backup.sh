@@ -86,3 +86,6 @@ cd /host/$backup
 backup_vocabularies
 backup_data
 backup_config
+
+# custom backup script
+[[ -f /host/backup.sh ]] && source /host/backup.sh

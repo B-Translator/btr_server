@@ -102,7 +102,6 @@ _make_data_backup() {
 
     # copy the data to the backup dir
     ds inject backup.sh $backup
-    [[ -f backup.sh ]] && source backup.sh
 
     # make the backup archive
     tar --create --gzip --preserve-permissions --file=$backup.tgz $backup/
