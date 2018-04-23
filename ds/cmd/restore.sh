@@ -67,17 +67,8 @@ _make_full_restore() {
     # extract the backup archive
     tar --extract --gunzip --preserve-permissions --file=$file
 
-    # restore the content of the databases
-    ds exec drush @btr sql-drop --yes
-    ds exec drush @btr sql-query \
-       --file=/host/$backup/btr.sql
-    ds exec drush @btr_dev sql-drop --yes
-    ds exec drush @btr_dev sql-query \
-       --file=/host/$backup/btr_dev.sql
-    ds exec drush @btr sql-drop --database=btr_data --yes
-    ds exec drush @btr sql-query \
-       --database=btr_data \
-       --file=/host/$backup/btr_data.sql
+    # restore the databases
+    ds mariadb restore $backup/btr-databases.tgz
 
     # restore application files
     rm -rf var-www/{btr,btr_dev,downloads}

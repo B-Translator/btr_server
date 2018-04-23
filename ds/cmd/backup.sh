@@ -40,7 +40,7 @@ _make_app_backup() {
     ds exec drush @$app cache-clear all
 
     # dump the content of the databases
-    ds exec drush @$app sql-dump --ordered-dump \
+    ds exec drush @$app sql-dump \
            --result-file=/host/$backup/$app.sql
 
     # copy app files to the backup dir
@@ -67,14 +67,8 @@ _make_full_backup() {
     # clear the cache
     ds exec drush --yes @local_btr cache-clear all
 
-    # dump the content of the databases
-    ds exec drush @btr sql-dump --ordered-dump \
-       --result-file=/host/$backup/btr.sql
-    ds exec drush @btr sql-dump --ordered-dump \
-       --database=btr_data \
-       --result-file=/host/$backup/btr_data.sql
-    ds exec drush @btr_dev sql-dump --ordered-dump \
-       --result-file=/host/$backup/btr_dev.sql
+    # make a full backup of the databases
+    ds mariadb backup $backup/btr-databases.tgz btr btr_dev btr_data
 
     # copy app files to the backup dir
     cp -a var-www/{btr,btr_dev,downloads} $backup/
