@@ -41,7 +41,8 @@ _make_app_backup() {
 
     # dump the content of the databases
     ds exec drush @$app sql-dump \
-           --result-file=/host/$backup/$app.sql
+       --extra="--hex-blob --compress" \
+       --result-file=/host/$backup/$app.sql
 
     # copy app files to the backup dir
     cp -a var-www/$app $backup
