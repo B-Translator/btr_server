@@ -9,11 +9,11 @@
 ## See also: https://wiki.ubuntu.com/UpstreamToKDE
 ##
 ## Where to get them:
-## https://translations.launchpad.net/ubuntu/xenial/+language-packs
+## https://translations.launchpad.net/ubuntu/bionic/+language-packs
 ##
 ## Get the base pack and the latest update:
-## wget https://translations.launchpad.net/ubuntu/xenial/+latest-full-language-pack
-## wget http://launchpadlibrarian.net/347134858/ubuntu-xenial-translations-update.tar.gz
+## wget https://translations.launchpad.net/ubuntu/bionic/+latest-full-language-pack
+## wget http://launchpadlibrarian.net/347134858/ubuntu-bionic-translations-update.tar.gz
 ######################################################################################
 
 echo "===== GETTING UBUNTU ====="
@@ -22,12 +22,12 @@ cd $(dirname $0)
 change_dir ubuntu
 
 ### Get the base pack and the latest update:
-release="xenial"
+release="bionic"
 wget https://translations.launchpad.net/ubuntu/$release/+latest-full-language-pack
 mv +latest-full-language-pack ubuntu-$release-translations.tar.gz
 ## Note: Find the URL of the latest update on this page:
 ##       https://translations.launchpad.net/ubuntu/$release/+language-packs
-wget http://launchpadlibrarian.net/363782981/ubuntu-xenial-translations-update.tar.gz
+wget http://launchpadlibrarian.net/375407066/ubuntu-bionic-translations-update.tar.gz
 
 ### downloaded language packs
 translations="./ubuntu-$release-translations.tar.gz"
