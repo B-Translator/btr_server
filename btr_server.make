@@ -92,7 +92,7 @@ projects[mailsystem] = 2.34
 projects[mimemail] = 1.0
 projects[reroute_email] = 1.3
 
-projects[phpmailer] = 3.0-beta4
+projects[phpmailer] = 3.1
 
 libraries[phpmailer][directory_name] = phpmailer
 libraries[phpmailer][download][type] = get
