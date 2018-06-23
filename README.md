@@ -30,11 +30,11 @@ For more detailed information see: http://info.btranslator.org
     git clone https://github.com/B-Translator/btr_server /opt/docker-scripts/btr_server
     ```
 
-  - Create a directory for the container: `ds init btr_server/ds @btr-example-org`
+  - Create a directory for the container: `ds init btr_server/ds @btr.example.org`
 
   - Fix the settings:
     ```
-    cd /var/ds/btr-example-org/
+    cd /var/ds/btr.example.org/
     vim settings.sh
     ```
 
@@ -45,11 +45,11 @@ For more detailed information see: http://info.btranslator.org
 
   - See: https://github.com/B-Translator/btr_client#installation
 
-  - Setup oauth2 login between the client and the server: `ds @bcl-example-org setup-oauth2-login @btr-example-org`
+  - Setup oauth2 login between the client and the server: `ds @bcl.example.org setup-oauth2-login @btr.example.org`
     or
     ```
-    cd /var/ds/bcl-example-org/
-    ds setup-oauth2-login @btr-example-org
+    cd /var/ds/bcl.example.org/
+    ds setup-oauth2-login @btr.example.org
     ```
 
 
@@ -66,6 +66,22 @@ For more detailed information see: http://info.btranslator.org
     https://bcl.example.org
 
 
+## Import the translation data
+
+    ds inject data-get.sh
+    ds inject data-import.sh
+    
+This may take a lot of time (many hours, and maybe a couple of days).
+
+
+## Backup and restore
+
+    ds backup data
+    ds backup dev
+    ds backup
+    ds restore <backup-file.tgz>
+    
+    
 ## Other commands
 
     ds help
@@ -84,6 +100,3 @@ For more detailed information see: http://info.btranslator.org
     ds inject dev/clone.sh test
     ds inject dev/clone-del.sh test
     ds inject dev/clone.sh 01
-
-    ds backup [proj1]
-    ds restore <backup-file.tgz> [proj1]
