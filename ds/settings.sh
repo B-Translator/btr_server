@@ -2,14 +2,14 @@ APP=btr_server/ds
 
 ### Docker settings.
 IMAGE=btr_server
-CONTAINER=btr-example-org
+CONTAINER=btr.example.org
 DOMAIN="btr.example.org"
 
 ### Uncomment if this installation is for development.
 DEV=true
 
 ### Other domains.
-DOMAINS="dev.btr.example.org"
+DOMAINS="dev.$DOMAIN"
 
 ### DB settings
 DBHOST=mariadb
