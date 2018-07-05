@@ -62,7 +62,7 @@ projects[features] = 2.10
 projects[strongarm] = 2.0
 projects[features_extra] = 1.0
 projects[node_export] = 3.1
-projects[uuid] = 1.0
+projects[uuid] = 1.1
 ;projects[menu_import] = 1.6
 
 ;projects[defaultconfig][version] = 1.x-dev
