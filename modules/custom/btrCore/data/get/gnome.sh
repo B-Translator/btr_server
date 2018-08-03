@@ -12,7 +12,7 @@ do
     rm -rf $lng
     mkdir $lng
     cd $lng
-    wget "$l10n_gnome/$lng)/$version/ui.tar.gz"
+    wget "$l10n_gnome/$lng/$version/ui.tar.gz"
     tar xfz ui.tar.gz
     rm ui.tar.gz
     cd ..
