@@ -11,7 +11,7 @@ defaults[projects][subdir] = contrib
 ; Bootstrap Theme
 ;--------------------
 
-projects[bootstrap] = 3.20
+projects[bootstrap] = 3.21
 projects[jquery_update] = 3.0-alpha5
 projects[less] = 4.0
 
@@ -62,7 +62,7 @@ projects[features] = 2.10
 projects[strongarm] = 2.0
 projects[features_extra] = 1.0
 projects[node_export] = 3.1
-projects[uuid] = 1.1
+projects[uuid] = 1.2
 ;projects[menu_import] = 1.6
 
 ;projects[defaultconfig][version] = 1.x-dev
@@ -88,7 +88,7 @@ projects[google_analytics] = 2.3
 ; Sending Emails
 ;--------------------
 
-projects[mailsystem] = 2.34
+projects[mailsystem] = 2.35
 projects[mimemail] = 1.0
 projects[reroute_email] = 1.3
 
@@ -96,7 +96,7 @@ projects[phpmailer] = 3.1
 
 libraries[phpmailer][directory_name] = phpmailer
 libraries[phpmailer][download][type] = get
-libraries[phpmailer][download][url] = https://github.com/PHPMailer/PHPMailer/archive/v5.2.24.zip
+libraries[phpmailer][download][url] = https://github.com/PHPMailer/PHPMailer/archive/v5.2.26.zip
 
 ;--------------------
 ; Libraries
@@ -127,8 +127,8 @@ projects[oauth2_loginprovider] = 1.11
 ; HybridAuth
 ;--------------------
 
-projects[hybridauth] = 2.15
+projects[hybridauth] = 2.16
 
 libraries[hybridauth][directory_name] = hybridauth
 libraries[hybridauth][download][type] = get
-libraries[hybridauth][download][url] = https://github.com/hybridauth/hybridauth/archive/2.5.1.tar.gz
+libraries[hybridauth][download][url] = https://github.com/hybridauth/hybridauth/archive/2.11.0.tar.gz
