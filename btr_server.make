@@ -34,7 +34,7 @@ projects[diff] = 3.3
 
 ;;; Extensions
 projects[ctools] = 1.14
-projects[libraries] = 2.3
+projects[libraries] = 2.5
 projects[entity] = 1.9
 projects[xautoload] = 5.7
 projects[token] = 1.7
@@ -89,7 +89,7 @@ projects[google_analytics] = 2.3
 ;--------------------
 
 projects[mailsystem] = 2.35
-projects[mimemail] = 1.0
+projects[mimemail] = 1.1
 projects[reroute_email] = 1.3
 
 projects[phpmailer] = 3.1
