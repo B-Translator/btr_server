@@ -19,19 +19,17 @@ variable_set('site_name', "$site_name ($tag)");
 $site_mail = variable_get('site_mail');
 
 function update_emails() {
-  // make site email something like 'user+tag@gmail.com'
+  // make site email something like 'user+tag@example.org'
   global $site_mail, $tag;
-  if (preg_match('/@gmail.com/', $site_mail)) {
-    $email = preg_replace('/@gmail.com/', "+$tag@gmail.com", $site_mail);
-    variable_set('site_mail', $email);
-    variable_set('smtp_from', $email);
-    variable_set('mimemail_mail', $email);
-    variable_set('simplenews_from_address', $email);
-    variable_set('simplenews_test_address', $email);
-    variable_set('mass_contact_default_sender_email', $email);
-    variable_set('reroute_email_address', $email);
-    variable_set('update_notify_emails', array($email));
-  }
+  $email = preg_replace('/(.*)@/', "$1+$tag@", $site_mail);
+  variable_set('site_mail', $email);
+  variable_set('smtp_from', $email);
+  variable_set('mimemail_mail', $email);
+  variable_set('simplenews_from_address', $email);
+  variable_set('simplenews_test_address', $email);
+  variable_set('mass_contact_default_sender_email', $email);
+  variable_set('reroute_email_address', $email);
+  variable_set('update_notify_emails', array($email));
 }
 
 function enable_email_rerouting() {
@@ -42,7 +40,7 @@ function enable_email_rerouting() {
 function create_test_users() {
   $new_user = array(
     'name' => 'user0',
-    'mail' => preg_replace('/@gmail.com/', '+user0@gmail.com', $site_mail),
+    'mail' => preg_replace('/(.*)@/', "$1+user0@", $site_mail),
     'pass' => 'pass0',
     'status' => 1,
     'init' => 'email address',
@@ -54,12 +52,12 @@ function create_test_users() {
 
   $new_user['name'] = 'user1';
   $new_user['pass'] = 'pass1';
-  $new_user['mail'] = preg_replace('/@gmail.com/', '+user1@gmail.com', $site_mail);
+  $new_user['mail'] = preg_replace('/(.*)@/', "$1+user1@", $site_mail);
   user_save(null, $new_user);
 
   $new_user['name'] = 'user2';
   $new_user['pass'] = 'pass2';
-  $new_user['mail'] = preg_replace('/@gmail.com/', '+user2@gmail.com', $site_mail);
+  $new_user['mail'] = preg_replace('/(.*)@/', "$1+user2@", $site_mail);
   user_save(null, $new_user);
 }
 

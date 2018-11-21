@@ -93,7 +93,8 @@ This may take a lot of time (many hours, and maybe a couple of days).
 
     ds inject set-adminpass.sh <new-drupal-admin-passwd>
     ds inject set-domain.sh <new.domain>
-    ds inject set-emailsmtp.sh <gmail-user> <gmail-passwd>
+    ds inject set-emailsmtp.sh 'smtp_server' <smtp-server> <smtp-domain>
+    ds inject set-emailsmtp.sh 'gmail_account' <gmail-user> <gmail-passwd>
     ds inject oauth2-client-add.sh <@alias> <client-key> <client-secret> <https://redirect-uri>
     ds inject set-languages.sh
 
