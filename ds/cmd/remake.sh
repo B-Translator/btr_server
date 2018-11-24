@@ -17,6 +17,10 @@ cmd_remake() {
     ds wsproxy ssl-cert
 
     # restore
-    local backup_file="backup-full-$(date +%Y%m%d).tgz"
+    local backup_file="backup-data-$(date +%Y%m%d).tgz"
     ds restore $backup_file
+
+    # get and import the data
+    ds inject data-get.sh
+    ds inject data-import.sh
 }

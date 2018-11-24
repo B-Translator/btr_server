@@ -87,5 +87,15 @@ backup_vocabularies
 backup_data
 backup_config
 
+# backup settings.sh
+cp /host/settings.sh .
+
 # custom backup script
 [[ -f /host/backup.sh ]] && source /host/backup.sh
+
+# backup any custom scripts
+[[ -f /host/backup.sh ]] && cp /host/backup.sh .
+[[ -f /host/restore.sh ]] && cp /host/restore.sh .
+[[ -d /host/cmd ]] && cp -a /host/cmd .
+[[ -d /host/scripts ]] && cp -a /host/scripts .
+

@@ -78,7 +78,7 @@ This may take a lot of time (many hours, and maybe a couple of days).
 
     ds backup data
     ds backup dev
-    ds backup
+    ds backup full
     ds restore <backup-file.tgz>
     
     

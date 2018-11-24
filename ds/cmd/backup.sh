@@ -1,8 +1,8 @@
 cmd_backup_help() {
     cat <<_EOF
-    backup [full | data | <app>]
-        'full' make a full backup of everything
+    backup [data | full | <app>]
         'data' make a backup of the important data only
+        'full' make a full backup of everything
         <app> can be 'btr', 'btr_dev', etc.
 
 _EOF
@@ -10,7 +10,7 @@ _EOF
 
 cmd_backup() {
     set -x
-    local arg=${1:-full}
+    local arg=${1:-data}
     case $arg in
         full)
             _make_full_backup
@@ -73,6 +73,9 @@ _make_full_backup() {
 
     # copy app files to the backup dir
     cp -a var-www/{btr,btr_dev,downloads} $backup/
+
+    # copy the data to the backup dir
+    ds inject backup.sh $backup
 
     # make the backup archive
     tar --create --gzip --preserve-permissions --file=$backup.tgz $backup/
