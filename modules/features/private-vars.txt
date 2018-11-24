@@ -47,3 +47,4 @@ hybridauth_provider_Twitter_enabled
 hybridauth_provider_Twitter_weight
 hybridauth_provider_Twitter_keys_key
 hybridauth_provider_Twitter_keys_secret
+user_register
