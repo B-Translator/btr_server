@@ -46,7 +46,6 @@ projects[subpathauto] = 1.3
 ;;; User interface
 projects[context] = 3.8
 projects[views] = 3.20
-;projects[homebox] = 2.0-rc1
 projects[boxes] = 1.2
 projects[edit_profile] = 1.0-beta2
 projects[wysiwyg] = 2.5
@@ -78,12 +77,6 @@ projects[l10n_update] = 2.2
 projects[boost] = 1.2
 ;projects[memcache] = 1.5
 
-;;; Services and Social
-projects[google_analytics] = 2.3
-;projects[drupalchat] = 1.7
-;projects[simplenews] = 1.1
-;projects[mass_contact] = 1.0
-
 ;--------------------
 ; Sending Emails
 ;--------------------
@@ -114,7 +107,6 @@ projects[contact_forms] = 1.8
 projects[menu_target] = 1.7
 projects[empty_front_page] = 1.0
 projects[nocurrent_pass] = 1.1
-projects[honeypot] = 1.22
 projects[advuser] = 3.x-dev
 
 ;--------------------
