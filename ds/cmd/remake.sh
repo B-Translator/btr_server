@@ -20,6 +20,6 @@ cmd_remake() {
     ds restore $backup_file
 
     # get and import the data
-    ds inject data-get.sh
+    ds inject data-get.sh nobg
     ds inject data-import.sh
 }
