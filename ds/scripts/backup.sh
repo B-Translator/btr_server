@@ -75,6 +75,10 @@ backup_config() {
     dir=/var/www/btr_dev/profiles/btr_server/modules/features
     $dir/save-private-vars.sh @btr_dev
     mv restore-private-vars.php restore-private-vars-btr-dev.php
+
+    # twitter config
+    [[ -f /home/twitter/.trc ]] && cp /home/twitter/.trc trc
+
 }
 
 

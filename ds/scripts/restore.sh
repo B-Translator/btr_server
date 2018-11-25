@@ -33,6 +33,12 @@ restore_config() {
     # restore private variables
     drush @btr php-script $(pwd)/restore-private-vars-btr.php
     drush @btr_dev php-script $(pwd)/restore-private-vars-btr-dev.php
+ 
+    # twitter config
+    if [[ -f trc ]]; then
+        cp trc /home/twitter/.trc
+        chown twitter: /home/twitter/.trc
+    fi
 }
 
 restore_custom_scripts() {
