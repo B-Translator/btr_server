@@ -30,4 +30,9 @@ cmd_create() {
         grant all privileges on *.* to '$DBUSER'@'$CONTAINER.$NETWORK' identified by '$DBPASS';
         flush privileges;
     "
+
+    # copy local commands
+    mkdir -p cmd/
+    [[ -f cmd/remake.sh ]] || cp $APP_DIR/misc/remake.sh cmd/
+
 }

@@ -40,6 +40,8 @@ For more detailed information see: http://info.btranslator.org
 
   - Build image, create the container and configure it: `ds make`
 
+  - Customize the local command 'remake': `vim cmd/remake.sh`
+
 
 ## Install B-Translator Client
 
