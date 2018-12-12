@@ -44,7 +44,7 @@ projects[pathauto] = 1.3
 projects[subpathauto] = 1.3
 
 ;;; User interface
-projects[context] = 3.8
+projects[context] = 3.9
 projects[views] = 3.20
 projects[boxes] = 1.2
 projects[edit_profile] = 1.0-beta2
