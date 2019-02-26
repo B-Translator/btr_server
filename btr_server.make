@@ -11,7 +11,7 @@ defaults[projects][subdir] = contrib
 ; Bootstrap Theme
 ;--------------------
 
-projects[bootstrap] = 3.22
+projects[bootstrap] = 3.23
 projects[jquery_update] = 3.0-alpha5
 projects[less] = 4.0
 
@@ -28,18 +28,17 @@ libraries[lessphp][download][url] = https://github.com/oyejorge/less.php/archive
 ;--------------------
 
 ;;; Development
-projects[devel] = 1.6
+projects[devel] = 1.7
 ;projects[coder] = 1.2
 projects[diff] = 3.4
 
 ;;; Extensions
-projects[ctools] = 1.14
+projects[ctools] = 1.15
 projects[libraries] = 2.5
 projects[entity] = 1.9
 projects[xautoload] = 5.7
 projects[token] = 1.7
-projects[rules] = 2.10
-projects[rules][patch][2923477] = https://www.drupal.org/files/issues/php7_2_compatibility-2923477-5.patch
+projects[rules] = 2.12
 projects[pathauto] = 1.3
 projects[subpathauto] = 1.3
 
@@ -83,7 +82,7 @@ projects[boost] = 1.2
 
 projects[mailsystem] = 2.35
 projects[mimemail] = 1.1
-projects[reroute_email] = 1.3
+projects[reroute_email] = 1.4
 
 projects[phpmailer] = 3.1
 
@@ -103,7 +102,7 @@ libraries[tinymce][download][url] = https://github.com/tinymce/tinymce/archive/4
 ; Misc
 ;--------------------
 
-projects[contact_forms] = 1.8
+projects[contact_forms] = 1.9
 projects[menu_target] = 1.7
 projects[empty_front_page] = 1.0
 projects[nocurrent_pass] = 1.1
@@ -113,7 +112,7 @@ projects[advuser] = 3.x-dev
 ; Web Services
 ;--------------------
 
-projects[oauth2_loginprovider] = 1.11
+projects[oauth2_loginprovider] = 1.x-dev
 
 ;--------------------
 ; HybridAuth
